@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navbar = () => {
-    const user = false;
+    const { user, logOut } = useContext(AuthContext);
 
     const navItems = (
         <>
@@ -11,7 +13,7 @@ const Navbar = () => {
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Instructors</NavLink></li>
             <li><NavLink to="/classes" exact="true"
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Classes</NavLink></li>
-           {user && <li><NavLink to="/dashboard " exact="true"
+            {user && <li><NavLink to="/dashboard " exact="true"
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Dashboard </NavLink></li>}
             <li><NavLink to="/blogs" exact="true"
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Blogs</NavLink></li>
@@ -46,18 +48,13 @@ const Navbar = () => {
 
                 {user ? (
                     <>
-                        {/* todo: user profile picture will be displayed when it have a photo
-                       todo : title will be dynamic
-                        */}
                         {user?.photoURL && (
-
-                            <img title="display name"
-                                className="h-12 rounded-full border-2 border-primary"
+                            <img title={user?.displayName}
+                                className="h-12 w-12 rounded-full border-2 border-primary"
                                 src={user?.photoURL}
-                                alt=""
                             />
                         )}
-                        <button className="ml-3 md:ml-5 btn btn-primary text-white">
+                        <button onClick={handleLogout} className="ml-3 md:ml-5 btn btn-primary text-white">
                             Logout
                         </button>
                     </>
