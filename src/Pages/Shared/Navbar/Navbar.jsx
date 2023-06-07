@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-    const user = true;
+    const user = false;
 
     const navItems = (
         <>

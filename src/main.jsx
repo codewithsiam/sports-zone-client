@@ -6,13 +6,8 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import Main from './Layout/Main';
+import router from './routes/Routes';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main></Main>,
-  },
-]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
