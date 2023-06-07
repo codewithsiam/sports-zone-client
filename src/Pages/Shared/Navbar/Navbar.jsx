@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { FaSignOutAlt } from "react-icons/fa";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -55,7 +56,7 @@ const Navbar = () => {
                             />
                         )}
                         <button onClick={handleLogout} className="ml-3 md:ml-5 btn btn-primary text-white">
-                            Logout
+                            Logout <FaSignOutAlt></FaSignOutAlt>
                         </button>
                     </>
                 ) : (
