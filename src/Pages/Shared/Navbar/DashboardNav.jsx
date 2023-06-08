@@ -22,14 +22,70 @@ const DashboardNav = () => {
 
     const navItems = (
         <>
-            <li><NavLink to="adminDashboard" exact="true"
-                className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2  mb-2 inline-block text-base leading-loose">Dashboard-Admin</NavLink></li>
-            <li><NavLink to="instructorDashboard" exact="true"
-                className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2  mb-2 inline-block text-base leading-loose">Dashboard-Instructor</NavLink></li>
-            <li><NavLink to="userDashboard" exact="true"
-                className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2  mb-2 inline-block text-base leading-loose">Dashboard-User</NavLink></li>
-            <li><NavLink to="manageUsers" exact="true"
-                className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2  mb-2 inline-block text-base leading-loose">Manage Users</NavLink></li>
+            <li>
+                <NavLink
+                    to="mySelectedClasses" 
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                    My Selected Classes
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="myEnrolledClasses" 
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                    My Enrolled Classes
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="addClass" 
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                    Add A Class
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="totalEnrolledStudents" 
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                    Total Enrolled Students
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="feedback" 
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                    Feedback
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="manageClasses" 
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                    Manage Classes
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="manageUsers" 
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                    Manage Users
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/" 
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                  Home
+                </NavLink>
+            </li>
         </>
     );
     return (

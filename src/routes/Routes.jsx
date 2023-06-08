@@ -9,6 +9,7 @@ import AdminDashboard from '../Pages/Dashboard/AdminDashboard/AdminDashboard';
 import InstructorDashboard from '../Pages/Dashboard/InstructorDashboard/InstructorDashboard';
 import StudentDashboard from '../Pages/Dashboard/StudentDashboard/StudentDashboard';
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUsers';
+import ManageClasses from '../Pages/Dashboard/AdminDashboard/ManageClasses';
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             {
                 path: 'manageUsers',
                 element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: 'manageClasses',
+                element: <ManageClasses></ManageClasses>
             }
         ]
     }
