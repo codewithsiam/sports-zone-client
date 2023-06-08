@@ -51,14 +51,26 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
-                navigate(from, { replace: true });
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'User Login successfully.',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+                const saveUser = { name: user?.displayName, email: user?.email, photoUrl: user?.photoUrl }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        navigate(from, { replace: true });
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User Login successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    })
+
 
             })
             .catch((error) => {
@@ -76,7 +88,7 @@ const Login = () => {
     // toggle password visibility 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
-      };
+    };
 
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
