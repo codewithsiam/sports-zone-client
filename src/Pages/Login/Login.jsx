@@ -34,7 +34,6 @@ const Login = () => {
 
                 navigate(from, { relative: true });
             }).catch(error => {
-                setError(error.message)
                 Swal.fire({
                     position: 'top-end',
                     icon: 'error',
@@ -63,7 +62,13 @@ const Login = () => {
 
             })
             .catch((error) => {
-                setError(error.message);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: `Something went wrong: ${error.message}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
 
             });
     }
@@ -74,7 +79,7 @@ const Login = () => {
       };
 
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 h-screen mt-4 w-full'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
             <div className='hidden sm:block md:mt-28'>
                 <img className='w-full h-96 object-cover' src={loginImage} alt="" />
             </div>

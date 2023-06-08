@@ -1,0 +1,51 @@
+[
+    {
+      "classImage": "path/to/image1.jpg",
+      "className": "Mathematics",
+      "instructorName": "Jane Smith",
+      "instructorEmail": "jane.smith@example.com",
+      "availableSeats": 15,
+      "price": 49.99
+    },
+    {
+      "classImage": "path/to/image2.jpg",
+      "className": "History 101",
+      "instructorName": "Michael Johnson",
+      "instructorEmail": "michael.johnson@example.com",
+      "availableSeats": 25,
+      "price": 39.99
+    },
+    {
+      "classImage": "path/to/image3.jpg",
+      "className": "English Literature",
+      "instructorName": "Sarah Davis",
+      "instructorEmail": "sarah.davis@example.com",
+      "availableSeats": 20,
+      "price": 34.99
+    },
+    {
+      "classImage": "path/to/image4.jpg",
+      "className": "Chemistry 101",
+      "instructorName": "Robert Thompson",
+      "instructorEmail": "robert.thompson@example.com",
+      "availableSeats": 18,
+      "price": 59.99
+    },
+    {
+      "classImage": "path/to/image5.jpg",
+      "className": "Art Appreciation",
+      "instructorName": "Emily Wilson",
+      "instructorEmail": "emily.wilson@example.com",
+      "availableSeats": 30,
+      "price": 29.99
+    },
+    {
+      "classImage": "path/to/image6.jpg",
+      "className": "Physical Education",
+      "instructorName": "David Anderson",
+      "instructorEmail": "david.anderson@example.com",
+      "availableSeats": 12,
+      "price": 24.99
+    }
+  ]
+  
