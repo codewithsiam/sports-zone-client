@@ -51,7 +51,7 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
-                const saveUser = { name: user?.displayName, email: user?.email, photoUrl: user?.photoUrl }
+                const saveUser = { name: user?.displayName, email: user?.email, photoUrl: user?.photoUrl, role: 'student' }
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
@@ -70,8 +70,6 @@ const Login = () => {
                             timer: 1500
                         });
                     })
-
-
             })
             .catch((error) => {
                 Swal.fire({

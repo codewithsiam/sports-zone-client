@@ -1,11 +1,31 @@
-import React from 'react';
 import useUsers from '../../../Hooks/useUsers';
-import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const ManageUsers = () => {
-    const [users] = useUsers();
-    console.log("sdf",users)
+    const [users, , refetch] = useUsers();
 
+    const handleChangeRole = (user, role) => {
+        const url = `http://localhost:5000/users/role/?id=${user._id}&role=${role}`;
+        fetch(url, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an ${role} Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+
+    }
 
     return (
         <div>
@@ -21,29 +41,47 @@ const ManageUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Action</th>
+                            <th className='text-center'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             users.map((user, index) =>
-                        <tr key={index}>
-                            <th>
-                                {index + 1}
-                            </th>
-                            <td>
-                                <img src={user?.photoUrl}  />
-                            </td>
-                            <td>{user?.name}</td>
-                            <td>{user?.email}</td>
-                            <th>
-                            <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-orange-600  text-white"><FaUserShield></FaUserShield></button> 
-                            </th>
-                            <th>
-                            <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
-                            </th>
-                        </tr>
-                          )}
+                                <tr key={index}>
+                                    <th>
+                                        {index + 1}
+                                    </th>
+                                    <td>
+                                        <img src={user?.photoUrl} />
+                                    </td>
+                                    <td>{user?.name}</td>
+                                    <td>{user?.email}</td>
+                                    <th>
+                                        {user?.role ? user.role : 'Student'}
+                                    </th>
+
+                                    <th>
+                                        <div className='float-right'>
+                                            {user?.role === "admin" && <>
+                                                <button onClick={() => handleChangeRole(user, "student")} className=' btn-primary  mx-2 rounded-lg p-3'> Student</button>
+                                                <button onClick={() => handleChangeRole(user, "instructor")} className=' btn-primary  mx-2 rounded-lg p-3'> Instructor</button>
+                                            </>}
+                                            {user?.role === "instructor" && <>
+                                                <button onClick={() => handleChangeRole(user, "admin")} className=' btn-primary  mx-2 rounded-lg p-3'> Admin</button>
+                                                <button onClick={() => handleChangeRole(user, "student")} className=' btn-primary  mx-2 rounded-lg p-3'> Student</button>
+
+                                            </>}
+                                            { user?.role === "student" && <>
+                                                <button onClick={() => handleChangeRole(user, "admin")} className=' btn-primary  mx-2 rounded-lg p-3'> Admin</button>
+                                                <button onClick={() => handleChangeRole(user, "instructor")} className=' btn-primary  mx-2 rounded-lg p-3'> Instructor</button>
+                                            </>}
+                                            <button className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
+
+                                        </div>
+
+                                    </th>
+                                </tr>
+                            )}
                     </tbody>
                 </table>
             </div>
