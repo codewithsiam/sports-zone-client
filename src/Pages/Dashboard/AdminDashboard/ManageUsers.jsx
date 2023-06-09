@@ -28,7 +28,25 @@ const ManageUsers = () => {
     }
 
     // delete a user from mongo database
-    const handleDeleteUser = ( user) => {
+    const handleDeleteUser = (user) => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                handleSwalConfirm(user);
+
+            }
+        })
+    }
+
+    const handleSwalConfirm = (user) => {
         const url = `http://localhost:5000/users?id=${user._id}`;
         fetch(url, {
             method: 'DELETE'
@@ -38,13 +56,11 @@ const ManageUsers = () => {
                 console.log(data)
                 if (data.deletedCount > 0) {
                     refetch();
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: `${user.name} is deleted successfully`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                    Swal.fire(
+                        'Deleted!',
+                        `${user?.name} has been deleted!`,
+                        'success'
+                    )
                 }
             })
     }

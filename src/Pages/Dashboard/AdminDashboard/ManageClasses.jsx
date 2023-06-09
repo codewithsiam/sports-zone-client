@@ -78,7 +78,7 @@ const ManageClasses = () => {
                 {/* head */}
                 <thead>
                     <tr>
-                        <th>Class Image</th>
+                        <th>Class </th>
                         <th>Class Name</th>
                         <th>Instructor Name</th>
                         <th>Instructor Email</th>
@@ -92,7 +92,17 @@ const ManageClasses = () => {
                     {classes.map((cls) => (
                         <tr key={cls._id}>
                             <td>
-                                <img className="h-10 w-10" src={cls.classImage} alt="" />
+                                <div className="flex items-center space-x-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-12 h-12">
+                                            <img src={cls.classImage} alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="font-bold">Hart Hagerty</div>
+                                        <div className="text-sm opacity-50">United States</div>
+                                    </div>
+                                </div>
                             </td>
                             <td>{cls.className}</td>
                             <td>{cls.instructorName}</td>
@@ -104,7 +114,7 @@ const ManageClasses = () => {
 
                                 {cls?.status === 'denied' && <button className="btn btn-info w-full" onClick={() => handleSendFeedback(cls)}>Send Feedback</button>}
                                 {cls?.status === "pending" && (
-                                    <div className="flex-col "> 
+                                    <div className="flex-col ">
                                         <button className="btn btn-sm btn-success w-full mb-1" onClick={() => handleUpdateStatus(cls, "approved")}>Approve</button>
                                         <button className="btn btn-sm btn-error w-full" onClick={() => handleUpdateStatus(cls, "denied")}>Deny</button>
                                     </div>
@@ -119,7 +129,7 @@ const ManageClasses = () => {
             {/* Feedback Modal */}
             <dialog id="customModal" className="modal">
                 <div className="modal-box">
-                    <button onClick={()=>window.customModal.close()} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    <button onClick={() => window.customModal.close()} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     <form onSubmit={handleSubmitFeedback} method="dialog" >
 
                         <h3 className="font-bold text-lg mb-3">Give a feedback </h3>
