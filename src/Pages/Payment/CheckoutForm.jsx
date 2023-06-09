@@ -4,9 +4,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
+import './CheckooutForm.css'
 
-
-const CheckoutForm = ({ payClass }) => {
+const CheckoutForm = ({ payClass, id }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
@@ -71,10 +72,41 @@ const CheckoutForm = ({ payClass }) => {
         if (confirmError) {
             console.log(confirmError)
         }
-        if(paymentIntent.status === "succeeded"){
-            const transactionId = paymentIntent.id ;
+
+        setProcessing(false);
+
+        if (paymentIntent.status === "succeeded") {
+            const transactionId = paymentIntent.id;
             setTransactionId(transactionId)
-            setProcessing(false);
+            // send to mongodb 
+            const payment = {
+                classId: payClass?._id,
+                name: user?.name,
+                email: user?.email,
+                transactionId,
+                price,
+                data: new Date(),
+                className: payClass?.className,
+            }
+
+            axios.post('http://localhost:5000/payments', payment)
+                .then(res => {
+                    console.log("from step one",res.data);
+                    if (res.data.insertedId) {
+                        axios.delete(`http://localhost:5000/classes/selected?id=${id}&email=${user?.email}`)
+                            .then(res => {
+                                if (res.data.deletedCount > 0) {
+                                    Swal.fire(
+                                        'Paid!',
+                                        `Payment successfull!`,
+                                        'success'
+                                    )
+                                }
+                            })
+
+                    }
+                })
+
         }
 
     }
@@ -103,7 +135,7 @@ const CheckoutForm = ({ payClass }) => {
                 </button>
             </form>
             {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
-            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}       
+            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}
         </div>
     );
 };
