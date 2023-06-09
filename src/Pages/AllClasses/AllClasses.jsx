@@ -10,11 +10,12 @@ const AllClasses = () => {
     const { user } = useContext(AuthContext);
     const [approvedClasses] = useApprovedClasses();
     const [selectedClasses, refetch] = useSelectedClasses();
-    console.log('sdf',approvedClasses);
+    console.log('approved class',approvedClasses);
+    console.log('selected class',selectedClasses);
 
 
     const handleSelectClass = (cls) => {
-        const isExist = selectedClasses.find(slcls => slcls._id === cls._id);
+        const isExist = selectedClasses.find(slcls => slcls.classId === cls._id);
         
         if (user && !isExist) {
             let classData = cls;

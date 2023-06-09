@@ -17,7 +17,7 @@ const CheckoutForm = ({ payClass, id }) => {
 
     const { user } = useContext(AuthContext);
 
-    console.log('sdsdfsdff', payClass)
+    console.log('pay class', payClass)
     // class data 
     const price = parseFloat(payClass?.price);
 
@@ -77,7 +77,7 @@ const CheckoutForm = ({ payClass, id }) => {
 
         setProcessing(false);
 
-        if (paymentIntent.status === "succeeded") {
+        if (paymentIntent?.status === "succeeded") {
             const transactionId = paymentIntent.id;
             setTransactionId(transactionId)
             // send to mongodb 
@@ -97,7 +97,7 @@ const CheckoutForm = ({ payClass, id }) => {
             axios.post('http://localhost:5000/payments', payment)
                 .then(res => {
                     console.log("from step one",res.data);
-                    if (res.data.insertedId) {
+                    if (res.data.postResult.insertedId) {
                         axios.delete(`http://localhost:5000/classes/selected?id=${id}&email=${user?.email}`)
                             .then(res => {
                                 
