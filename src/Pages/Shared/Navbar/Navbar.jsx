@@ -12,7 +12,7 @@ const Navbar = () => {
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Home</NavLink></li>
             <li><NavLink to="/instructors" exact="true"
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Instructors</NavLink></li>
-            <li><NavLink to="/classes" exact="true"
+            <li><NavLink to="/allClasses" exact="true"
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Classes</NavLink></li>
             {user && <li><NavLink to="/dashboard " exact="true"
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Dashboard </NavLink></li>}

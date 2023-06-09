@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useClasses from "../../../Hooks/useClasses";
-import { RxCross2 } from 'react-icons/rx';
 import Swal from "sweetalert2";
 
 const ManageClasses = () => {
@@ -103,9 +102,9 @@ const ManageClasses = () => {
                             <td>{cls.status}</td>
                             <td className="flex gap-2 items-center float-left" >
 
-                                {!cls?.feedback && <button className="btn btn-info btn-sm h-10" onClick={() => handleSendFeedback(cls)}>Send <br /> Feedback</button>}
+                                {cls?.status === 'denied' && <button className="btn btn-info w-full" onClick={() => handleSendFeedback(cls)}>Send Feedback</button>}
                                 {cls?.status === "pending" && (
-                                    <div className="flex-col ">
+                                    <div className="flex-col "> 
                                         <button className="btn btn-sm btn-success w-full mb-1" onClick={() => handleUpdateStatus(cls, "approved")}>Approve</button>
                                         <button className="btn btn-sm btn-error w-full" onClick={() => handleUpdateStatus(cls, "denied")}>Deny</button>
                                     </div>
