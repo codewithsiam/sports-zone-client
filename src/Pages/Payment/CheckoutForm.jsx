@@ -16,6 +16,8 @@ const CheckoutForm = ({ payClass, id }) => {
     const [transactionId, setTransactionId] = useState('');
 
     const { user } = useContext(AuthContext);
+
+    
     // class data 
     const price = parseFloat(payClass?.price);
 
@@ -80,13 +82,14 @@ const CheckoutForm = ({ payClass, id }) => {
             setTransactionId(transactionId)
             // send to mongodb 
             const payment = {
-                classId: payClass?._id,
-                name: user?.name,
+                classId: payClass?.classId,
+                className: payClass?.className,
+                instructorEmail: payClass?.instructorEmail,
+                name: user?.displayName,
                 email: user?.email,
                 transactionId,
                 price,
-                data: new Date(),
-                className: payClass?.className,
+                date: new Date(),
             }
 
             axios.post('http://localhost:5000/payments', payment)
@@ -95,6 +98,7 @@ const CheckoutForm = ({ payClass, id }) => {
                     if (res.data.insertedId) {
                         axios.delete(`http://localhost:5000/classes/selected?id=${id}&email=${user?.email}`)
                             .then(res => {
+                                
                                 if (res.data.deletedCount > 0) {
                                     Swal.fire(
                                         'Paid!',

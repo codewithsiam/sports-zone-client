@@ -34,10 +34,18 @@ const DashboardNav = () => {
             </li>
             <li>
                 <NavLink
-                    to="totalEnrolledStudents"
+                    to="myClasses"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
-                    Total Enrolled Students
+                   My Classes
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="paymentHistory"
+                    className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                >
+                    PaymentHistory
                 </NavLink>
             </li>
             <li>

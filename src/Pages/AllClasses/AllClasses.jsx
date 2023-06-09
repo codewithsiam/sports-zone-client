@@ -11,14 +11,17 @@ const AllClasses = () => {
     const [approvedClasses] = useApprovedClasses();
     const [selectedClasses, refetch] = useSelectedClasses();
     console.log('sdf',approvedClasses);
+
+
     const handleSelectClass = (cls) => {
         const isExist = selectedClasses.find(slcls => slcls._id === cls._id);
         
         if (user && !isExist) {
             let classData = cls;
+            cls.classId = cls._id;
             delete classData._id;
             cls.studentEmail = user?.email;
-            console.log(classData);
+            console.log('sdf',classData);
 
             // send data to the mongodb
             axios.post('http://localhost:5000/classes/selected', classData, {
@@ -57,9 +60,8 @@ const AllClasses = () => {
             <div className='grid grid-cols-3 gap-5 w-11/12 mx-auto'>
                 {
                     approvedClasses?.map((cls, index) =>
-                        <div key={index}>
-                            <div className="card w-96 bg-base-100 shadow-xl">
-                                <figure><img src={cls?.classImage} /></figure>
+                            <div key={index} className={`card w-96  shadow-xl ${cls?.availableSeats == 0 ? "bg-red-300" : "bg-base-100"}`}>
+                                <figure><img className='w-full h-48 object-cover' src={cls?.classImage} /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">Class Name: {cls?.className}</h2>
                                     <p>Instructor Name: {cls?.instructorName}</p>
@@ -70,7 +72,7 @@ const AllClasses = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>)
+                        )
                 }
             </div>
         </div>
