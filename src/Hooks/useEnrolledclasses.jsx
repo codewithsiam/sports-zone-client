@@ -9,7 +9,7 @@ const useEnrolledClasses = () => {
   const { data: enrolledClasses = [], isLoading: loading, refetch } = useQuery({
     queryKey: ['enrolledClasses'],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/payments/enrolled?email=${user?.email}`);
+      const res = await axios.get(`http://localhost:5000/payments/enrolled/student?email=${user?.email}`);
       return res.data; 
     },
   });

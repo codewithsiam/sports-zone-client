@@ -17,7 +17,7 @@ const CheckoutForm = ({ payClass, id }) => {
 
     const { user } = useContext(AuthContext);
 
-    
+    console.log('sdsdfsdff', payClass)
     // class data 
     const price = parseFloat(payClass?.price);
 
@@ -83,10 +83,12 @@ const CheckoutForm = ({ payClass, id }) => {
             // send to mongodb 
             const payment = {
                 classId: payClass?.classId,
-                className: payClass?.className,
+                className: payClass?.name,
+                classImage: payClass?.classImage,
+                instructorName: payClass?.instructorName,
                 instructorEmail: payClass?.instructorEmail,
-                name: user?.displayName,
-                email: user?.email,
+                studentName: user?.displayName,
+                studentEmail: user?.email,
                 transactionId,
                 price,
                 date: new Date(),
