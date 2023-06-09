@@ -3,12 +3,15 @@ import { Outlet } from 'react-router-dom';
 import DashboardNav from '../Pages/Shared/Navbar/DashboardNav';
 
 const Dashboard = () => {
-   
+
 
     return (
-        <div className="flex">
-          <DashboardNav></DashboardNav>
-            <div className="h-screen flex-1 p-7">
+        <div className="flex relative">
+            <div className='h-screen sticky top-0'>
+
+                <DashboardNav></DashboardNav>
+            </div>
+            <div className="h-full flex-1 p-7">
                 <Outlet></Outlet>
             </div>
         </div>

@@ -28,15 +28,15 @@ const ManageUsers = () => {
     }
 
     // delete a user from mongo database
-    const handleDeleteUser = (id) => {
-        const url = `http://localhost:5000/users?id=${id}`;
+    const handleDeleteUser = ( user) => {
+        const url = `http://localhost:5000/users?id=${user._id}`;
         fetch(url, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.modifiedCount > 0) {
+                if (data.deletedCount > 0) {
                     refetch();
                     Swal.fire({
                         position: 'top-end',
@@ -105,7 +105,7 @@ const ManageUsers = () => {
                                                 <button onClick={() => handleChangeRole(user, "admin")} className=' btn-primary  mx-2 rounded-lg p-3'> Admin</button>
                                                 <button onClick={() => handleChangeRole(user, "instructor")} className=' btn-primary  mx-2 rounded-lg p-3'> Instructor</button>
                                             </>} */}
-                                            <button onClick={() => handleDeleteUser(user?._id)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
+                                            <button onClick={() => handleDeleteUser(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
 
                                         </div>
 

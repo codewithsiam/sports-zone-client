@@ -6,25 +6,11 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 
 const DashboardNav = () => {
     const { user } = useContext(AuthContext);
-
-    const Menus = [
-        { title: "Dashboard", src: "adminDashboard" },
-        { title: "Dashboard", src: "instructorDashboard" },
-        { title: "Dashboard", src: "userDashboard" },
-        { title: "My Selected Classes", src: "userDashboard" },
-        { title: "My Enrolled Classes", src: "userDashboard" },
-        { title: "Add A Class", src: "Chat" },
-        { title: "Total Enrolled Students ", src: "Calendar" },
-        { title: "Feedback", src: "Calendar" },
-        { title: "Manage Classes", src: "Calendar" },
-        { title: "Manage Users", src: "Calendar" },
-    ];
-
     const navItems = (
         <>
             <li>
                 <NavLink
-                    to="mySelectedClasses" 
+                    to="mySelectedClasses"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
                     My Selected Classes
@@ -32,7 +18,7 @@ const DashboardNav = () => {
             </li>
             <li>
                 <NavLink
-                    to="myEnrolledClasses" 
+                    to="myEnrolledClasses"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
                     My Enrolled Classes
@@ -40,7 +26,7 @@ const DashboardNav = () => {
             </li>
             <li>
                 <NavLink
-                    to="addClass" 
+                    to="addAClass"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
                     Add A Class
@@ -48,7 +34,7 @@ const DashboardNav = () => {
             </li>
             <li>
                 <NavLink
-                    to="totalEnrolledStudents" 
+                    to="totalEnrolledStudents"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
                     Total Enrolled Students
@@ -56,7 +42,7 @@ const DashboardNav = () => {
             </li>
             <li>
                 <NavLink
-                    to="feedback" 
+                    to="feedback"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
                     Feedback
@@ -64,7 +50,7 @@ const DashboardNav = () => {
             </li>
             <li>
                 <NavLink
-                    to="manageClasses" 
+                    to="manageClasses"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
                     Manage Classes
@@ -72,7 +58,7 @@ const DashboardNav = () => {
             </li>
             <li>
                 <NavLink
-                    to="manageUsers" 
+                    to="manageUsers"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
                     Manage Users
@@ -80,10 +66,10 @@ const DashboardNav = () => {
             </li>
             <li>
                 <NavLink
-                    to="/" 
+                    to="/"
                     className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                 >
-                  Home
+                    Home
                 </NavLink>
             </li>
         </>
@@ -93,7 +79,6 @@ const DashboardNav = () => {
             className="w-72 bg-dark-purple h-full p-5  pt-8 relative"
         >
             <div className="items-center">
-
                 <h1
                     className={`text-white origin-left font-medium text-xl `}
                 >

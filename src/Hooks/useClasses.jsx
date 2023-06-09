@@ -10,7 +10,7 @@ const useClasses = () => {
         }
     })
 
-    return [classes, loading, refetch]
+    return [classes, refetch, loading ]
 }
 
 export default useClasses;
