@@ -4,12 +4,13 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import useSelectedClasses from '../../Hooks/useSelectedClasses';
+import useApprovedClasses from '../../Hooks/useApprovedClasses';
 
 const AllClasses = () => {
     const { user } = useContext(AuthContext);
-    const [allClass] = useAllClass();
+    const [approvedClasses] = useApprovedClasses();
     const [selectedClasses, refetch] = useSelectedClasses();
-
+    console.log('sdf',approvedClasses);
     const handleSelectClass = (cls) => {
         const isExist = selectedClasses.find(slcls => slcls._id === cls._id);
         
@@ -27,7 +28,6 @@ const AllClasses = () => {
             })
                 .then((response) => {
                     const data = response.data;
-                    console.log(data);
                     if (data.insertedId) {
                         refetch();
                         Swal.fire(
@@ -56,8 +56,8 @@ const AllClasses = () => {
             <h2 className='text-xl md:text-3xl font-bold text-center my-4 text-primary '>All Classes</h2>
             <div className='grid grid-cols-3 gap-5 w-11/12 mx-auto'>
                 {
-                    allClass?.map(cls =>
-                        <div key={cls?._id}>
+                    approvedClasses?.map((cls, index) =>
+                        <div key={index}>
                             <div className="card w-96 bg-base-100 shadow-xl">
                                 <figure><img src={cls?.classImage} /></figure>
                                 <div className="card-body">

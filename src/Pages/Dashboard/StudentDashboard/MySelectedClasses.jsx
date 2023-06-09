@@ -3,16 +3,17 @@ import useSelectedClasses from '../../../Hooks/useSelectedClasses';
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 const MySelectedClasses = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [selectedClasses, refetch] = useSelectedClasses();
     // console.log('MySelectedClasses', selectedClasses);
 
     const handleDeleteClass = (cls) => {
         console.log('from validate');
-       // validate
+        // validate
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -21,13 +22,13 @@ const MySelectedClasses = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 handleSwalConfirm(cls)
             }
-          })
+        })
 
-          const handleSwalConfirm = (cls) => { 
+        const handleSwalConfirm = (cls) => {
             const url = `http://localhost:5000/classes/selected/?id=${cls._id}&email=${user?.email}`;
             fetch(url, {
                 method: 'DELETE'
@@ -44,7 +45,7 @@ const MySelectedClasses = () => {
                         )
                     }
                 })
-          }
+        }
     };
 
 
@@ -74,6 +75,11 @@ const MySelectedClasses = () => {
                             <td>{cls.availableSeats}</td>
                             <td>{cls.price}</td>
                             <td>
+                                <button className="btn btn-ghost bg-green-500 mr-3 text-white">
+                                    <Link to={`/dashboard/payment/${cls._id}`} className="text-white">
+                                        Pay
+                                    </Link>
+                                </button>
                                 <button onClick={() => handleDeleteClass(cls)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt> </button>
                             </td>
                         </tr>

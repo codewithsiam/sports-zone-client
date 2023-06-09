@@ -13,6 +13,8 @@ import ManageClasses from '../Pages/Dashboard/AdminDashboard/ManageClasses';
 import AddAClass from '../Pages/Dashboard/InstructorDashboard/AddClass';
 import AllClasses from '../Pages/AllClasses/AllClasses';
 import MySelectedClasses from '../Pages/Dashboard/StudentDashboard/MySelectedClasses';
+import Feedback from '../Pages/Feedback/Feedback';
+import Payment from '../Pages/Payment/Payment';
 
 const router = createBrowserRouter([
     {
@@ -69,6 +71,14 @@ const router = createBrowserRouter([
             {
                 path: 'mySelectedClasses',
                 element: <MySelectedClasses></MySelectedClasses>
+            },
+            {
+                path: 'feedback',
+                element: <Feedback></Feedback>
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>
             }
         ]
     }

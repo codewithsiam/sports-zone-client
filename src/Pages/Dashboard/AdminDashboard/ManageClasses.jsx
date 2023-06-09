@@ -78,10 +78,9 @@ const ManageClasses = () => {
                 {/* head */}
                 <thead>
                     <tr>
-                        <th>Class </th>
+                        <th>#</th>
+                        <th>Class - Instructor Name and email </th>
                         <th>Class Name</th>
-                        <th>Instructor Name</th>
-                        <th>Instructor Email</th>
                         <th>Available <br /> Seats</th>
                         <th>Price</th>
                         <th>Status</th>
@@ -89,8 +88,9 @@ const ManageClasses = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {classes.map((cls) => (
+                    {classes.map((cls, index) => (
                         <tr key={cls._id}>
+                            <td>{index + 1}</td>
                             <td>
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
@@ -99,14 +99,12 @@ const ManageClasses = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <div className="font-bold">Hart Hagerty</div>
-                                        <div className="text-sm opacity-50">United States</div>
+                                        <div className="font-bold">{cls?.instructorName}</div>
+                                        <div className="text-sm opacity-50">{cls?.instructorEmail}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>{cls.className}</td>
-                            <td>{cls.instructorName}</td>
-                            <td className="text-xs">{cls.instructorEmail}</td>
+                            <td>{cls.className}</td>''
                             <td>{cls.availableSeats}</td>
                             <td>{cls.price}</td>
                             <td>{cls.status}</td>
