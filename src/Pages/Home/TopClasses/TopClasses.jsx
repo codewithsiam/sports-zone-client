@@ -20,7 +20,7 @@ const TopClasses = () => {
                 centeredSlides={true}
                 slidesPerView={2}
                 autoplay={{
-                    delay: 2000,
+                    delay: 3000,
                     disableOnInteraction: false,
                 }}
                 coverflowEffect={{
@@ -43,7 +43,7 @@ const TopClasses = () => {
                                 <div className="absolute flex items-center justify-between bottom-0 text-black w-full p-5  bg-opacity-60 bg-black">
                                     <div>
                                         {cls?.className && <h1 className="text-white text-2xl  font-bold">{cls?.className}</h1>}
-                                        <p className="text-white">{cls?.instructorName}</p>
+                                        <p className="text-white">Instructor: {cls?.instructorName}</p>
                                         <p className="text-white">Price: {cls?.price}</p>
                                     </div>
                                     <Link to="/allClasses">
@@ -58,9 +58,9 @@ const TopClasses = () => {
                     )
 
                 }
-                <SwiperSlide className="bg-gray-100">
+                <SwiperSlide className="bg-indigo-200">
                     <Link to="/allClasses">
-                        <button className="text-black text-2xl font-bold mx-auto mt-32 flex items-center justify-center">Show All <FaArrowRight></FaArrowRight> </button>
+                        <button className="text-black text-2xl font-bold mx-auto mt-32 flex items-center justify-center gap-3">Show All <FaArrowRight></FaArrowRight> </button>
                     </Link>
                 </SwiperSlide>
 

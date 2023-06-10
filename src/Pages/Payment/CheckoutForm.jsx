@@ -23,7 +23,13 @@ const CheckoutForm = ({ payClass, id }) => {
 
     useEffect(() => {
         if (price > 0) {
-            axios.post('http://localhost:5000/create-payment-intent', { price })
+            const token = localStorage.getItem('access-token'); 
+            const config = {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            };
+            axios.post('http://localhost:5000/create-payment-intent', config, { price })
                 .then(res => {
                     // console.log(res.data.clientSecret)
                     setClientSecret(res.data.clientSecret);

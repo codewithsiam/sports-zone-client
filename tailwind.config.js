@@ -15,7 +15,7 @@ export default {
         mytheme: {
           primary: "#646CFF",
 
-          secondary: "#282f66",
+          secondary: "#F000B8",
 
           dark: "#000000",
 

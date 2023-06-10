@@ -1,15 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { FaSignOutAlt } from "react-icons/fa";
+import { ToggleContext } from "../../../Provider/ToggleProvider";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const { isDark, toggleMode } = useContext(ToggleContext);
 
     const navItems = (
         <>
             <li><NavLink to="/" exact="true"
-                className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Home</NavLink></li>
+                className={`${isDark ? "text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose" 
+                : "text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"}`}>Home</NavLink></li>
             <li><NavLink to="/instructors" exact="true"
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Instructors</NavLink></li>
             <li><NavLink to="/allClasses" exact="true"
@@ -18,6 +21,10 @@ const Navbar = () => {
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Dashboard </NavLink></li>}
             <li><NavLink to="/blogs" exact="true"
                 className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Blogs</NavLink></li>
+          {/* for testing  */}
+            {/* <li><NavLink to="/blogs" exact="true"
+                className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Blogs</NavLink></li> */}
+
         </>
     );
 
@@ -25,7 +32,7 @@ const Navbar = () => {
         logOut();
     }
     return (
-        <div className="navbar bg-base-100 shadow-sm shadow-primary h-10 ">
+        <div className={`navbar ${isDark ? "bg-black" : "bg-base-100"} shadow-sm shadow-primary h-10 `}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -45,7 +52,22 @@ const Navbar = () => {
                 </ul>
             </div>
 
+
+            <li>
+                <div className="md:flex items-center justify-center gap-4 ml-4">
+                    <label className="toggle-switch">
+                        <input
+                            type="checkbox"
+                            className="toggle toggle-primary"
+                            checked={isDark}
+                            onChange={() => toggleMode()}
+                        />
+                        <span className="toggle-slider"></span>
+                    </label>
+                </div>
+            </li>
             <div className="md:mx-10 ml-auto mr-1">
+
 
                 {user ? (
                     <>
