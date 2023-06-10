@@ -25,10 +25,10 @@ const PaymentHistory = () => {
                             enrolledClasses.map((stn, index) =>
                                 <tr key={stn._id}>
                                     <th>{index + 1}</th>
-                                    <td>{stn.name}</td>
-                                    <td>{stn.email}</td>
-                                    <td>{stn.payClass.name}</td>
-                                    <td>{stn.transactionId}</td>
+                                    <td>{stn?.studentName}</td>
+                                    <td>{stn?.studentEmail}</td>
+                                    <td>{stn?.className}</td>
+                                    <td>{stn?.transactionId}</td>
                                 </tr>
                             )
                         }

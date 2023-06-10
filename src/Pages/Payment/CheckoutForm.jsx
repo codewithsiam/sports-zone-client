@@ -21,7 +21,6 @@ const CheckoutForm = ({ payClass, id }) => {
     // class data 
     const price = parseFloat(payClass?.price);
 
-    // fetch('http://localhost:5000/create-payment-intent', {
     useEffect(() => {
         if (price > 0) {
             axios.post('http://localhost:5000/create-payment-intent', { price })
@@ -83,7 +82,7 @@ const CheckoutForm = ({ payClass, id }) => {
             // send to mongodb 
             const payment = {
                 classId: payClass?.classId,
-                className: payClass?.name,
+                className: payClass?.className,
                 classImage: payClass?.classImage,
                 instructorName: payClass?.instructorName,
                 instructorEmail: payClass?.instructorEmail,
