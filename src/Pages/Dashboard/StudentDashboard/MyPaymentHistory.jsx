@@ -1,9 +1,9 @@
 import React from 'react';
-import usePaymentHistory from '../../../Hooks/usePaymentHistory';
+import useEnrolledClasses from '../../../Hooks/useEnrolledclasses';
 
-const PaymentHistory = () => {
-    const [paymentHistory] = usePaymentHistory();
-    console.log("sdf",paymentHistory);
+const MyPaymentHistory = () => {
+    const [enrolledClasses] = useEnrolledClasses();
+    console.log("sdf",enrolledClasses);
     return (
         <div>
             <h1 className="text-2xl font-semibold ">Feedback</h1>
@@ -22,7 +22,7 @@ const PaymentHistory = () => {
                     <tbody>
                         {/* row */}
                         {
-                            paymentHistory?.map((stn, index) =>
+                            enrolledClasses.map((stn, index) =>
                                 <tr key={stn._id}>
                                     <th>{index + 1}</th>
                                     <td>{stn?.studentName}</td>
@@ -39,4 +39,4 @@ const PaymentHistory = () => {
     );
 };
 
-export default PaymentHistory;
+export default MyPaymentHistory;
