@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 const MySelectedClasses = () => {
     const { user } = useContext(AuthContext);
     const [selectedClasses, refetch] = useSelectedClasses();
-    // console.log('MySelectedClasses', selectedClasses);
 
     const handleDeleteClass = (cls) => {
         console.log('from validate');
@@ -29,9 +28,12 @@ const MySelectedClasses = () => {
         })
 
         const handleSwalConfirm = (cls) => {
-            const url = `http://localhost:5000/classes/selected/?id=${cls._id}&email=${user?.email}`;
+            const token = localStorage.getItem('access-token');
+
+            const url = `http://localhost:5000/classes/selected/?id=${cls._id}&email=${user?.email}`
             fetch(url, {
-                method: 'DELETE'
+                method: 'DELETE',
+                Authorization: `Bearer ${token}`,
             })
                 .then(res => res.json())
                 .then(data => {

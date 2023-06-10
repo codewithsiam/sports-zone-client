@@ -6,12 +6,19 @@ import Swal from 'sweetalert2';
 import useSelectedClasses from '../../Hooks/useSelectedClasses';
 import useApprovedClasses from '../../Hooks/useApprovedClasses';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useAdmin from '../../Hooks/useAdmin';
+import useInstructorClasses from '../../Hooks/useInstructorClasses';
+import useInstructorRole from '../../Hooks/useInstructorRole';
 
 const AllClasses = () => {
     const { user } = useContext(AuthContext);
     const [approvedClasses] = useApprovedClasses();
     const [selectedClasses, refetch] = useSelectedClasses();
 
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructorRole();
+
+    console.log('sdf',approvedClasses)
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -39,9 +46,12 @@ const AllClasses = () => {
             console.log('sdf', classData);
 
             // send data to the mongodb
+          
+            const token = localStorage.getItem('access-token');
             axios.post('http://localhost:5000/classes/selected', classData, {
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `bearer ${token}`
                 },
             })
                 .then((response) => {
@@ -83,7 +93,7 @@ const AllClasses = () => {
                                 <p>Available Seats: {cls?.availableSeats}</p>
                                 <p>Price: {cls?.price}</p>
                                 <div className="card-actions justify-end">
-                                    <button onClick={() => handleSelectClass(cls)} disabled={cls?.availableSeats == 0} className="btn btn-primary">Select Class</button>
+                                    <button onClick={() => handleSelectClass(cls)} disabled={cls?.availableSeats == 0 || isAdmin || isInstructor} className="btn btn-primary">Select Class</button>
                                 </div>
                             </div>
                         </div>

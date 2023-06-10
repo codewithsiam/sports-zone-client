@@ -60,7 +60,7 @@ const TopClasses = () => {
                 }
                 <SwiperSlide className="bg-gray-100">
                     <Link to="/allClasses">
-                        <button className="text-black text-2xl font-bold w-full h-full flex items-center justify-center">Show All <FaArrowRight></FaArrowRight> </button>
+                        <button className="text-black text-2xl font-bold mx-auto mt-32 flex items-center justify-center">Show All <FaArrowRight></FaArrowRight> </button>
                     </Link>
                 </SwiperSlide>
 

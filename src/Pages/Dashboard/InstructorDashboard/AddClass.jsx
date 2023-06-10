@@ -59,10 +59,13 @@ const AddAClass = () => {
   };
 
   const handleSwalFireWithUpdate = (classData) => {
-    fetch('http://localhost:5000/classes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const token = localStorage.getItem('access-token'); 
+      
+      fetch('http://localhost:5000/classes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(classData),
     })

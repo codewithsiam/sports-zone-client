@@ -2,11 +2,11 @@ import React from 'react';
 import useClasses from '../../Hooks/useClasses';
 import Banner from './Banner/Banner';
 import TopClasses from './TopClasses/TopClasses';
+import TopInstructors from './TopInstructors/TopInstructors';
 
 const Home = () => {
 
     const [classes] = useClasses();
-    console.log('class', classes)
 
     return (
         <div>
@@ -15,6 +15,7 @@ const Home = () => {
             <div className='h-full md:w-9/12 mx-auto mt-20'>
                 <TopClasses></TopClasses>
 
+            <TopInstructors></TopInstructors>
             </div>
         </div>
     );

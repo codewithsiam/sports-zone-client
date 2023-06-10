@@ -7,12 +7,16 @@ const ManageClasses = () => {
     const [selectedClass, setSelectedClass] = useState(null);
     const [feedback, setFeedback] = useState("");
 
-    console.log(classes);
+
 
     const handleUpdateStatus = (cls, status) => {
+        const token = localStorage.getItem('access-token');
         const url = `http://localhost:5000/classes/status/?id=${cls._id}&status=${status}`;
         fetch(url, {
-            method: 'PATCH'
+            method: 'PATCH',
+            headers: {
+                Authorization: `Bearer ${token}`
+              }
         })
             .then(res => res.json())
             .then(data => {
@@ -43,9 +47,12 @@ const ManageClasses = () => {
             console.log(`Feedback for class ${selectedClass}: ${feedback}`);
 
             const url = `http://localhost:5000/classes/feedback/?id=${selectedClass._id}&feedback=${feedback}`;
-
+            const token = localStorage.getItem('access-token');
             fetch(url, {
-                method: 'PATCH'
+                method: 'PATCH',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                  }
             })
                 .then(res => res.json())
                 .then(data => {

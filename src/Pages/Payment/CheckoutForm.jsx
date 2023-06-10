@@ -92,12 +92,17 @@ const CheckoutForm = ({ payClass, id }) => {
                 price,
                 date: new Date(),
             }
-
-            axios.post('http://localhost:5000/payments', payment)
+            const token = localStorage.getItem('access-token'); 
+            const config = {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            };
+            axios.post('http://localhost:5000/payments', config, payment)
                 .then(res => {
                     console.log("from step one",res.data);
                     if (res.data.postResult.insertedId) {
-                        axios.delete(`http://localhost:5000/classes/selected?id=${id}&email=${user?.email}`)
+                        axios.delete(`http://localhost:5000/classes/selected?id=${id}&email=${user?.email}`, config)
                             .then(res => {
                                 
                                 if (res.data.deletedCount > 0) {

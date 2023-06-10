@@ -3,7 +3,6 @@ import useEnrolledClasses from '../../../Hooks/useEnrolledclasses';
 
 const MyEnrolledClasses = () => {
     const [enrolledClasses] = useEnrolledClasses();
-    console.log('sfd', enrolledClasses);
     return (
         <div>
             <h1>My Enrolled Classes</h1>

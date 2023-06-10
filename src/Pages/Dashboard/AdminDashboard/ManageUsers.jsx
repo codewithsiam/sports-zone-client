@@ -9,9 +9,13 @@ const ManageUsers = () => {
     console.log('admin',isAdmin);
 
     const handleChangeRole = (user, role) => {
+        const token = localStorage.getItem('access-token');
         const url = `http://localhost:5000/users/role/?id=${user._id}&role=${role}`;
         fetch(url, {
-            method: 'PATCH'
+            method: 'PATCH',
+            headers: {
+                Authorization: `Bearer ${token}`
+              }
         })
             .then(res => res.json())
             .then(data => {
@@ -50,9 +54,13 @@ const ManageUsers = () => {
     }
 
     const handleSwalConfirm = (user) => {
+        const token = localStorage.getItem('access-token');
         const url = `http://localhost:5000/users?id=${user._id}`;
         fetch(url, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`
+              }
         })
             .then(res => res.json())
             .then(data => {

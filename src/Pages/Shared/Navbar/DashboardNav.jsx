@@ -7,9 +7,13 @@ import useInstructorRole from '../../../Hooks/useInstructorRole';
 
 
 const DashboardNav = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructorRole();
+
+    const handleLogout = () => {
+        logOut();
+    }
 
     const navItems = (
         <>
@@ -121,6 +125,14 @@ const DashboardNav = () => {
                     >
                      Classes
                     </NavLink>
+                </li>
+                <li>
+                    <button
+                    onClick={handleLogout}
+                        className="text-left mt-8 text-white bg-red-500 hover:bg-red-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
+                    >
+                     Log Out
+                    </button>
                 </li>
         </>
     );

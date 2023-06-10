@@ -9,7 +9,13 @@ const usePaymentHistory = () => {
   const { data: paymentsHistory = [], isLoading: loading, refetch } = useQuery({
     queryKey: ['paymentsHistory'],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/payments/history?email=${user?.email}`);
+      const token = localStorage.getItem('access-token'); 
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      };
+      const res = await axios.get(`http://localhost:5000/payments/history?email=${user?.email}`, config);
       return res.data; 
     },
   });

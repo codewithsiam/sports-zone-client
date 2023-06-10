@@ -6,7 +6,7 @@ const Instructors = () => {
     console.log("inst", instructors);
     return (
         <div>
-             <h2 className='text-xl md:text-3xl font-bold text-center my-4 text-primary '>Instructors</h2>
+            <h2 className='text-xl md:text-3xl font-bold text-center my-4 text-primary '>Instructors</h2>
             <div className='grid grid-cols-3 w-11/12 mx-auto mt-10'>
                 {
                     instructors?.map(ins =>

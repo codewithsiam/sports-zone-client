@@ -4,7 +4,6 @@ import useInstructorClasses from '../../../Hooks/useInstructorClasses';
 const MyClasses = () => {
     const [instructorClasses] = useInstructorClasses();
 
-    console.log('sffsdf', instructorClasses);
     return (
         <div>
             <h1>My Classes</h1>

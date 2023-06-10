@@ -3,7 +3,6 @@ import usePaymentHistory from '../../../Hooks/usePaymentHistory';
 
 const PaymentHistory = () => {
     const [paymentHistory] = usePaymentHistory();
-    console.log("sdf",paymentHistory);
     return (
         <div>
             <h1 className="text-2xl font-semibold ">Feedback</h1>
