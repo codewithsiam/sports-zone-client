@@ -15,10 +15,6 @@ const AllClasses = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleTest = () => {
-
-        // navigate("/login", {replace: true });
-    };
 
     const handleSelectClass = (cls) => {
         if (!user) {

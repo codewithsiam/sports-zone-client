@@ -1,9 +1,3 @@
-#app { height: 100% }
-html,
-body {
-  position: relative;
-  height: 100%;
-}
 
 body {
   margin: 0;
@@ -15,9 +9,27 @@ body {
   height: 100%;
 }
 
+
+
+.swiper-slide img {
+  display: block;
+}
+
+/* -------------------------- */
+
+#app { height: 100% }
+
+
+.swiper {
+  width: 100%;
+  padding-bottom: 50px;
+}
+
 .swiper-slide {
   background-position: center;
   background-size: cover;
+  width: 300px;
+  height: 300px;
 }
 
 .swiper-slide img {

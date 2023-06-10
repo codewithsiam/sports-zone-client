@@ -34,7 +34,7 @@ const DashboardNav = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="myEnrolledClasses"
+                            to="myPaymentHistory"
                             className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                         >
                             Payment History
@@ -101,12 +101,17 @@ const DashboardNav = () => {
                         PaymentHistory
                     </NavLink>
                 </li>
-                <li>
+              
+            </>
+            }
+
+            {/* for logged in students, instructor and admin  */}
+              <li>
                     <NavLink
                         to="/"
                         className="text-white hover:bg-indigo-400 w-full rounded-lg px-4 py-2 mb-2 inline-block text-base leading-loose"
                     >
-                        Home
+                       Go to  Home
                     </NavLink>
                 </li>
                 <li>
@@ -117,8 +122,6 @@ const DashboardNav = () => {
                      Classes
                     </NavLink>
                 </li>
-            </>
-            }
         </>
     );
     return (

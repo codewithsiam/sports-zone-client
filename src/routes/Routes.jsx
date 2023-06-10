@@ -20,6 +20,7 @@ import Instructors from '../Pages/Instructors/Instructors';
 import AdminRoute from './AdminRoute';
 import PrivateRoute from './PrivateRoute';
 import InstructorRoute from './InstructorRoute';
+import MyPaymentHistory from '../Pages/Dashboard/StudentDashboard/MyPaymentHistory';
 
 const router = createBrowserRouter([
     {
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>
+            },
+            {
+                path: 'myPaymentHistory',
+                element: <MyPaymentHistory></MyPaymentHistory>
             },
             {
                 path: 'myEnrolledClasses',
