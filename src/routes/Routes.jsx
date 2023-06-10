@@ -6,8 +6,6 @@ import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import DashboardLayout from '../Layout/DashboardLayout';
 import AdminDashboard from '../Pages/Dashboard/AdminDashboard/AdminDashboard';
-import InstructorDashboard from '../Pages/Dashboard/InstructorDashboard/InstructorDashboard';
-import StudentDashboard from '../Pages/Dashboard/StudentDashboard/StudentDashboard';
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUsers';
 import ManageClasses from '../Pages/Dashboard/AdminDashboard/ManageClasses';
 import AddAClass from '../Pages/Dashboard/InstructorDashboard/AddClass';
@@ -16,7 +14,6 @@ import MySelectedClasses from '../Pages/Dashboard/StudentDashboard/MySelectedCla
 import Feedback from '../Pages/Feedback/Feedback';
 import Payment from '../Pages/Payment/Payment';
 import MyEnrolledClasses from '../Pages/Dashboard/StudentDashboard/MyEnrolledClasses';
-import TotalEnrolledStudents from '../Pages/Dashboard/AdminDashboard/PaymentHistory';
 import PaymentHistory from '../Pages/Dashboard/AdminDashboard/PaymentHistory';
 import MyClasses from '../Pages/Dashboard/InstructorDashboard/MyClasses';
 import Instructors from '../Pages/Instructors/Instructors';
@@ -60,12 +57,8 @@ const router = createBrowserRouter([
                 element: <AdminDashboard></AdminDashboard>
             },
             {
-                path: 'instructorDashboard',
-                element: <InstructorDashboard></InstructorDashboard>
-            },
-            {
-                path: 'studentDashboard',
-                element: <StudentDashboard></StudentDashboard>
+                path: 'paymentHistory',
+                element: <AdminRoute><PaymentHistory></PaymentHistory></AdminRoute>
             },
             {
                 path: 'manageUsers',
@@ -73,7 +66,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'manageClasses',
-                element: <ManageClasses></ManageClasses>
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             },
             {
                 path: 'addAClass',
@@ -94,10 +87,6 @@ const router = createBrowserRouter([
             {
                 path: 'myEnrolledClasses',
                 element: <MyEnrolledClasses></MyEnrolledClasses>
-            },
-            {
-                path: 'paymentHistory',
-                element: <PaymentHistory></PaymentHistory>
             },
             {
                 path: 'myClasses',
