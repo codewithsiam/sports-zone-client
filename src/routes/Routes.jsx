@@ -21,6 +21,7 @@ import PaymentHistory from '../Pages/Dashboard/AdminDashboard/PaymentHistory';
 import MyClasses from '../Pages/Dashboard/InstructorDashboard/MyClasses';
 import Instructors from '../Pages/Instructors/Instructors';
 import AdminRoute from './AdminRoute';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
                 path: 'adminDashboard',
