@@ -1,9 +1,12 @@
 import useUsers from '../../../Hooks/useUsers';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useAdmin from '../../../Hooks/useAdmin';
 
 const ManageUsers = () => {
     const [users, , refetch] = useUsers();
+    const [isAdmin, isAdminLoading] = useAdmin();
+    console.log('admin',isAdmin);
 
     const handleChangeRole = (user, role) => {
         const url = `http://localhost:5000/users/role/?id=${user._id}&role=${role}`;

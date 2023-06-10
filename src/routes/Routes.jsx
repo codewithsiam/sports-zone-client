@@ -20,6 +20,7 @@ import TotalEnrolledStudents from '../Pages/Dashboard/AdminDashboard/PaymentHist
 import PaymentHistory from '../Pages/Dashboard/AdminDashboard/PaymentHistory';
 import MyClasses from '../Pages/Dashboard/InstructorDashboard/MyClasses';
 import Instructors from '../Pages/Instructors/Instructors';
+import AdminRoute from './AdminRoute';
 
 const router = createBrowserRouter([
     {
@@ -67,7 +68,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'manageUsers',
-                element: <ManageUsers></ManageUsers>
+                element:  <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             },
             {
                 path: 'manageClasses',

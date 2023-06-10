@@ -90,7 +90,7 @@ const DashboardNav = () => {
                 <h1
                     className={`text-white origin-left font-medium text-xl `}
                 >
-                    Sports Zone
+                    Hi, {user?.displayName}
                 </h1>
                 <ul className='mt-10'>
                     {navItems}
