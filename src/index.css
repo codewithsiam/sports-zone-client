@@ -5,19 +5,9 @@
 /* CSS */
 .active {
     color: #646CFF;
+    font-weight: 600;
     background-color: rgb(240, 243, 255);
     border-left: 2px solid #646CFF;
     border-right: 2px solid #646CFF;
 }
 
-/* particles --------------------- */
-.particles-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-width: 500px; /* Adjust the width as per your requirement */
-    margin: 0 auto;
-    z-index: 9999; /* Adjust the z-index as needed */
-  }
-  

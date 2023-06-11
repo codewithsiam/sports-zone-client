@@ -78,7 +78,7 @@ const ManageUsers = () => {
 
     return (
         <div>
-            <h1 className="text-2xl font-semibold ">Manage Users</h1>
+            <h1 className="text-2xl font-semibold mb-8">Manage Users</h1>
 
             <div className="overflow-x-auto mt-10">
                 <table className="table">

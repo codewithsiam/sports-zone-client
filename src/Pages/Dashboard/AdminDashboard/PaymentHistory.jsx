@@ -5,7 +5,7 @@ const PaymentHistory = () => {
     const [paymentHistory] = usePaymentHistory();
     return (
         <div>
-            <h1 className="text-2xl font-semibold ">Feedback</h1>
+            <h1 className="text-2xl font-semibold mb-8">Feedback</h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

@@ -4,8 +4,7 @@ import Main from '../Layout/Main';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
-import DashboardLayout from '../Layout/DashboardLayout';
-import AdminDashboard from '../Pages/Dashboard/AdminDashboard/AdminDashboard';
+import DashboardLayout from '../Layout/DashboardLayout';''
 import ManageUsers from '../Pages/Dashboard/AdminDashboard/ManageUsers';
 import ManageClasses from '../Pages/Dashboard/AdminDashboard/ManageClasses';
 import AddAClass from '../Pages/Dashboard/InstructorDashboard/AddClass';
@@ -21,11 +20,13 @@ import AdminRoute from './AdminRoute';
 import PrivateRoute from './PrivateRoute';
 import InstructorRoute from './InstructorRoute';
 import MyPaymentHistory from '../Pages/Dashboard/StudentDashboard/MyPaymentHistory';
+import Error from '../Pages/Error/Error';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -55,10 +56,6 @@ const router = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
-                path: 'adminDashboard',
-                element: <AdminDashboard></AdminDashboard>
-            },
-            {
                 path: 'paymentHistory',
                 element: <AdminRoute><PaymentHistory></PaymentHistory></AdminRoute>
             },
@@ -80,6 +77,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'feedback',
+                element: <InstructorRoute><Feedback></Feedback></InstructorRoute>
+            },
+            {
+                path: 'updateClass:id',
                 element: <InstructorRoute><Feedback></Feedback></InstructorRoute>
             },
             {

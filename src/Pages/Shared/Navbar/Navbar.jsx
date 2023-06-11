@@ -3,27 +3,50 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { FaSignOutAlt } from "react-icons/fa";
 import { ToggleContext } from "../../../Provider/ToggleProvider";
+import useAdmin from "../../../Hooks/useAdmin";
+import useInstructorRole from "../../../Hooks/useInstructorRole";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const { isDark, toggleMode } = useContext(ToggleContext);
 
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructorRole();
+
     const navItems = (
         <>
             <li><NavLink to="/" exact="true"
-                className={`${isDark ? "text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose" 
-                : "text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"}`}>Home</NavLink></li>
+                className={`${isDark ? "text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose"
+                    : "text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"}`}>Home</NavLink></li>
             <li><NavLink to="/instructors" exact="true"
-                className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Instructors</NavLink></li>
+                className={`${isDark ? "text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose"
+                    : "text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"}`}>Instructors</NavLink></li>
             <li><NavLink to="/allClasses" exact="true"
-                className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Classes</NavLink></li>
-            {user && <li><NavLink to="/dashboard " exact="true"
-                className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Dashboard </NavLink></li>}
+                className={`${isDark ? "text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose"
+                    : "text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"}`}>Classes</NavLink></li>
+            {user && (
+                <li>
+                    <NavLink
+                        to={isAdmin ? '/dashboard/manageUsers' : isInstructor ? '/dashboard/myClasses' : '/dashboard/mySelectedClasses'}
+                        exact={true}
+                        className={`${isDark
+                                ? 'text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose'
+                                : 'text-body-color hover:text-primary mb-2 inline-block text-base leading-loose'
+                            }`}
+                    >
+                        Dashboard
+                    </NavLink>
+                </li>
+            )}
+
             <li><NavLink to="/blogs" exact="true"
-                className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Blogs</NavLink></li>
-          {/* for testing  */}
+                className={`${isDark ? "text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose"
+                    : "text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"}`}>Blogs</NavLink></li>
+
+            {/* for testing  */}
             {/* <li><NavLink to="/blogs" exact="true"
-                className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose">Blogs</NavLink></li> */}
+                 className={`${isDark ? "text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose" 
+                : "text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"}`}>Blogs</NavLink></li> */}
 
         </>
     );
@@ -32,7 +55,7 @@ const Navbar = () => {
         logOut();
     }
     return (
-        <div className={`navbar ${isDark ? "bg-black" : "bg-base-100"} shadow-sm shadow-primary h-10 `}>
+        <div className={`navbar ${isDark ? "bg-dark-purple" : "bg-base-100"} shadow-sm shadow-primary h-10 `}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -56,6 +79,7 @@ const Navbar = () => {
             <li>
                 <div className="md:flex items-center justify-center gap-4 ml-4">
                     <label className="toggle-switch">
+                        <p className={`${isDark ? "text-white font-bold" : "text-primary font-bold"}`}>{isDark ? "Lite" : "Dark"}</p>
                         <input
                             type="checkbox"
                             className="toggle toggle-primary"

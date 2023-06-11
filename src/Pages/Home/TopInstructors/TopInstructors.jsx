@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,11 +13,13 @@ import { Pagination, Autoplay } from "swiper";
 import useTopInstructors from '../../../Hooks/useTopInstructors';
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import { ToggleContext } from "../../../Provider/ToggleProvider";
 
 const TopInstructors = () => {
 
     const [topInstructors] = useTopInstructors();
-    console.log('sdf', topInstructors);
+    const {isDark} = useContext(ToggleContext);
+    const cardBackgroundClass = isDark ? "bg-indigo-200" : "bg-base-100";
     return (
         <div>
             <Swiper
@@ -38,7 +40,7 @@ const TopInstructors = () => {
                     topInstructors?.map((ins, index) =>
 
                         <SwiperSlide>
-                            <div className="card w-[500px] h-72 lg:card-side bg-base-100 shadow-2xl">
+                            <div className={`card w-[500px] h-72 lg:card-side  ${cardBackgroundClass} shadow-2xl`}>
                                 <figure><img className="w-[200px] h-full object-cover" src={ins.image} /></figure>
                                 <div className="card-body">
                                     <div className="absolute top-2 right-4 ml-1 font-semibold">

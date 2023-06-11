@@ -3,10 +3,10 @@ import useInstructorClasses from '../../../Hooks/useInstructorClasses';
 
 const MyClasses = () => {
     const [instructorClasses] = useInstructorClasses();
-
+console.log('sdf', instructorClasses);
     return (
         <div>
-            <h1>My Classes</h1>
+            <h1 className="text-2xl font-semibold mb-8">My Classes</h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -30,21 +30,21 @@ const MyClasses = () => {
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={cls.classImage} />
+                                                <img src={cls?.classImage} />
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="font-bold">{cls.className}</div>
+                                            <div className="font-bold">{cls?.className}</div>
 
                                         </div>
                                     </div>
                                 </td>
                                 <td className='md:max-w-4xl h-full'>
-                                    {cls.feedback}
+                                    {cls?.feedback}
                                 </td>
-                                <td>{cls.price}</td>
-                                <td>{cls.status}</td>
-                                <td>243</td>
+                                <td>{cls?.price}</td>
+                                <td>{cls?.status}</td>
+                                <td>{cls?.totalEnrolled}</td>
                                 <th>
                                     <button className="btn btn-info btn-xs">Update</button>
                                 </th>

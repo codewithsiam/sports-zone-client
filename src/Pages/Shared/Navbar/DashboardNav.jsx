@@ -109,6 +109,7 @@ const DashboardNav = () => {
             </>
             }
 
+<div className="divider"></div> 
             {/* for logged in students, instructor and admin  */}
               <li>
                     <NavLink

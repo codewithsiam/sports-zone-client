@@ -7,21 +7,31 @@ import useSelectedClasses from '../../Hooks/useSelectedClasses';
 import useApprovedClasses from '../../Hooks/useApprovedClasses';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAdmin from '../../Hooks/useAdmin';
-import useInstructorClasses from '../../Hooks/useInstructorClasses';
 import useInstructorRole from '../../Hooks/useInstructorRole';
+import { ToggleContext } from '../../Provider/ToggleProvider';
+import useEnrolledClasses from '../../Hooks/useEnrolledclasses';
 
 const AllClasses = () => {
     const { user } = useContext(AuthContext);
-    const [approvedClasses] = useApprovedClasses();
+    const [approvedClasses, approvedClassRefetch] = useApprovedClasses();
     const [selectedClasses, refetch] = useSelectedClasses();
-
+    const [enrolledClasses] = useEnrolledClasses();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructorRole();
+    const { isDark } = useContext(ToggleContext);
 
-    console.log('sdf',approvedClasses)
+    console.log('sdf', approvedClasses)
     const navigate = useNavigate();
     const location = useLocation();
 
+    // validate already added or not 
+    const isClassSelected = (classId) => {
+        return selectedClasses.some((selectedClass) => selectedClass.classId === classId);
+    };
+
+    const isClassEnrolled = (classId) => {
+        return enrolledClasses.some((enrolledClass) => enrolledClass.classId === classId);
+    };
 
     const handleSelectClass = (cls) => {
         if (!user) {
@@ -46,7 +56,7 @@ const AllClasses = () => {
             console.log('sdf', classData);
 
             // send data to the mongodb
-          
+
             const token = localStorage.getItem('access-token');
             axios.post('http://localhost:5000/classes/selected', classData, {
                 headers: {
@@ -58,6 +68,7 @@ const AllClasses = () => {
                     const data = response.data;
                     if (data.insertedId) {
                         refetch();
+                        approvedClassRefetch();
                         Swal.fire(
                             `${classData.className} Selected Successfully!`,
                             'Your class has been added!',
@@ -79,21 +90,30 @@ const AllClasses = () => {
     }
 
 
+
     return (
         <div>
-            <h2 className='text-xl md:text-3xl font-bold text-center my-4 text-primary '>All Classes</h2>
+            <h2 className='text-xl md:text-3xl font-bold text-center my-8 text-primary '>All Classes</h2>
             <div className='grid grid-cols-3 gap-5 w-11/12 mx-auto'>
                 {
                     approvedClasses?.map((cls, index) =>
-                        <div key={index} className={`card w-96  shadow-xl ${cls?.availableSeats == 0 ? "bg-red-300" : "bg-base-100"}`}>
+                        <div key={index} className={`card w-96  shadow-xl ${cls?.availableSeats == 0 ? "bg-red-300" : isDark ? "bg-indigo-200" : "bg-base-100"} `}>
                             <figure><img className='w-full h-48 object-cover' src={cls?.classImage} /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">Class Name: {cls?.className}</h2>
                                 <p>Instructor Name: {cls?.instructorName}</p>
                                 <p>Available Seats: {cls?.availableSeats}</p>
-                                <p>Price: {cls?.price}</p>
+                                <p>Price: ${cls?.price}</p>
                                 <div className="card-actions justify-end">
-                                    <button onClick={() => handleSelectClass(cls)} disabled={cls?.availableSeats == 0 || isAdmin || isInstructor} className="btn btn-primary">Select Class</button>
+                                   
+
+                                    {isClassSelected(cls._id) ? (
+                                        <button disabled className='btn'>Already Selected</button>
+                                    ) : isClassEnrolled(cls._id) ? (
+                                        <button disabled className='btn'>Already Enrolled</button>
+                                    ) : (
+                                        <button onClick={() => handleSelectClass(cls)} disabled={cls?.availableSeats == 0 || isAdmin || isInstructor} className={`btn btn-primary`}>Select Class</button>
+                                    )}
                                 </div>
                             </div>
                         </div>

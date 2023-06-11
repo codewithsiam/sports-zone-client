@@ -5,7 +5,7 @@ const MyEnrolledClasses = () => {
     const [enrolledClasses] = useEnrolledClasses();
     return (
         <div>
-            <h1>My Enrolled Classes</h1>
+            <h1 className="text-2xl font-semibold mb-8">My Enrolled Classes</h1>
 
             <div className='grid grid-cols-2 gap-5'>
                 {enrolledClasses?.map(cls =>

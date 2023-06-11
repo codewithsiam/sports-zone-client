@@ -29,15 +29,15 @@ const MySelectedClasses = () => {
 
         const handleSwalConfirm = (cls) => {
             const token = localStorage.getItem('access-token');
-
-            const url = `http://localhost:5000/classes/selected/?id=${cls._id}&email=${user?.email}`
+            console.log(cls);
+            const url = `http://localhost:5000/classes/selected?id=${cls.classId}&email=${user?.email}`
             fetch(url, {
                 method: 'DELETE',
                 Authorization: `Bearer ${token}`,
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    console.log('del',data)
                     if (data.deletedCount > 0) {
                         refetch();
                         Swal.fire(
@@ -53,7 +53,7 @@ const MySelectedClasses = () => {
 
     return (
         <div>
-            <h1>Manage Classes</h1>
+            <h1 className="text-2xl font-semibold mb-8">Manage Classes</h1>
             <table className="table">
                 {/* head */}
                 <thead>
