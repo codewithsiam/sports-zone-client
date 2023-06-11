@@ -21,6 +21,7 @@ import PrivateRoute from './PrivateRoute';
 import InstructorRoute from './InstructorRoute';
 import MyPaymentHistory from '../Pages/Dashboard/StudentDashboard/MyPaymentHistory';
 import Error from '../Pages/Error/Error';
+import UpdateClass from '../Pages/Dashboard/InstructorDashboard/UpdateClass';
 
 const router = createBrowserRouter([
     {
@@ -80,8 +81,8 @@ const router = createBrowserRouter([
                 element: <InstructorRoute><Feedback></Feedback></InstructorRoute>
             },
             {
-                path: 'updateClass:id',
-                element: <InstructorRoute><Feedback></Feedback></InstructorRoute>
+                path: 'updateClass/:id',
+                element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>
             },
             {
                 path: 'mySelectedClasses',

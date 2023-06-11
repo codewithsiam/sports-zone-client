@@ -1,9 +1,11 @@
 import React from 'react';
 import useInstructorClasses from '../../../Hooks/useInstructorClasses';
+import { Link } from 'react-router-dom';
 
 const MyClasses = () => {
     const [instructorClasses] = useInstructorClasses();
-console.log('sdf', instructorClasses);
+    console.log('sdf', instructorClasses);
+    
     return (
         <div>
             <h1 className="text-2xl font-semibold mb-8">My Classes</h1>
@@ -24,7 +26,7 @@ console.log('sdf', instructorClasses);
                     <tbody>
 
                         {instructorClasses?.map(cls =>
-                            <tr>
+                            <tr key={cls._id}>
                                 <th>1</th>
                                 <td>
                                     <div className="flex items-center space-x-3">
@@ -46,7 +48,9 @@ console.log('sdf', instructorClasses);
                                 <td>{cls?.status}</td>
                                 <td>{cls?.totalEnrolled}</td>
                                 <th>
-                                    <button className="btn btn-info btn-xs">Update</button>
+                                    <Link to={`/dashboard/updateClass/${cls?._id}`}>
+                                        <button className="btn btn-info btn-xs">Update</button>
+                                    </Link>
                                 </th>
                             </tr>
                         )}
