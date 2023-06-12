@@ -33,7 +33,7 @@ const TopInstructors = () => {
                     <SwiperSlide key={index}>
                         <div className={`card w-full md:w-[500px] h-72 lg:card-side ${cardBackgroundClass} shadow-2xl`}>
                             <figure>
-                                <img className="w-[250px] h-[290px] object-cover" src={ins.image} alt="" />
+                                <img className="w-[250px] h-[290px] object-cover" src={ins.photoURL} alt="" />
                             </figure>
                             <div className="card-body">
                                 <div className="absolute top-0 right-4 ml-1 font-semibold">
