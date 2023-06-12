@@ -7,7 +7,7 @@ export const ToggleProvider = ({ children }) => {
 
   const toggleMode = () => {
     setIsDark(!isDark);
-    console.log('sdfdd',isDark);
+    // console.log('sdfdd',isDark);
   };
 
   return (

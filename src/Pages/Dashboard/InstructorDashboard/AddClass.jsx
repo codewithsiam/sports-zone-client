@@ -30,7 +30,7 @@ const AddAClass = () => {
         })
           .then(res => res.json())
           .then(imgResponse => {
-            console.log(imgResponse);
+            // console.log(imgResponse);
             if (imgResponse.success) {
     
               const imgURL = imgResponse.data.display_url;
@@ -71,7 +71,7 @@ const AddAClass = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
           reset();
           Swal.fire(

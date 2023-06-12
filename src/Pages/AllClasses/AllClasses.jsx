@@ -20,7 +20,7 @@ const AllClasses = () => {
     const [isInstructor] = useInstructorRole();
     const { isDark } = useContext(ToggleContext);
 
-    console.log('sdf', approvedClasses)
+    // console.log('sdf', approvedClasses)
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -53,7 +53,7 @@ const AllClasses = () => {
             cls.classId = cls._id;
             delete classData._id;
             cls.studentEmail = user?.email;
-            console.log('sdf', classData);
+            // console.log('sdf', classData);
 
             // send data to the mongodb
 

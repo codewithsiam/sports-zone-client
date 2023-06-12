@@ -1,8 +1,12 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const useDeniedClasses = () => {
-  const { data: deniedClasses = [], isLoading: loading, refetch } = useQuery({
+  const {loading} = useContext(AuthContext);
+  const { data: deniedClasses = [], isLoading, refetch } = useQuery({
+    enabled: !loading && !!user?.email,
     queryKey: ['deniedClasses'],
     queryFn: async () => {
       const token = localStorage.getItem('access-token'); 
@@ -16,7 +20,7 @@ const useDeniedClasses = () => {
     },
   });
 
-  return [deniedClasses, refetch, loading];
+  return [deniedClasses, refetch, isLoading];
 };
 
 export default useDeniedClasses;

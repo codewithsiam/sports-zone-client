@@ -7,7 +7,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 const useEnrolledClasses = () => {
     const {user, loading} = useContext(AuthContext);
   const { data: enrolledClasses = [], isLoading: isLoading, refetch } = useQuery({
-    enabled: !loading && !!user?.email,
+    enabled: !loading && !!user?.email ,
     queryKey: ['enrolledClasses'],
     queryFn: async () => {
       const token = localStorage.getItem('access-token'); 

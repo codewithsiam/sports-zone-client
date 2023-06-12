@@ -58,7 +58,7 @@ const CheckoutForm = ({ payClass, id }) => {
         }
         else {
             setCardError('')
-            console.log('payment method', paymentMethod)
+            // console.log('payment method', paymentMethod)
         }
 
        
@@ -105,7 +105,7 @@ const CheckoutForm = ({ payClass, id }) => {
             };
             axios.post('https://sports-zone-server.vercel.app/payments', payment, config)
                 .then(res => {
-                    console.log("from step one", res.data);
+                    // console.log("from step one", res.data);
                     if (res.data.postResult.insertedId) {
                         axios.delete(`https://sports-zone-server.vercel.app/classes/selected?id=${payClass?.classId}&email=${user?.email}`, config)
                             .then(res => {

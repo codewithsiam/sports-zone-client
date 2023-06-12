@@ -11,7 +11,7 @@ const MySelectedClasses = () => {
     const [selectedClasses, refetch] = useSelectedClasses();
 
     const handleDeleteClass = (cls) => {
-        console.log('from validate');
+        // console.log('from validate');
         // validate
         Swal.fire({
             title: 'Are you sure?',
@@ -29,7 +29,7 @@ const MySelectedClasses = () => {
 
         const handleSwalConfirm = (cls) => {
             const token = localStorage.getItem('access-token');
-            console.log(cls);
+            // console.log(cls);
             const url = `https://sports-zone-server.vercel.app/classes/selected?id=${cls?.classId}&email=${user?.email}`
             fetch(url, {
                 method: 'DELETE',
@@ -37,7 +37,7 @@ const MySelectedClasses = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log('del',data)
+                    // console.log('del',data)
                     if (data.deletedCount > 0) {
                         refetch();
                         Swal.fire(

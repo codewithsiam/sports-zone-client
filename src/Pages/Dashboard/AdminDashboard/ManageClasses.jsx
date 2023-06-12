@@ -20,7 +20,7 @@ const ManageClasses = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.modifiedCount > 0) {
                     refetch();
                     Swal.fire({
@@ -42,7 +42,7 @@ const ManageClasses = () => {
 
     const handleSubmitFeedback = (event) => {
         event.preventDefault();
-        console.log(feedback);
+        // console.log(feedback);
         if (feedback !== "") {
             console.log(`Feedback for class ${selectedClass}: ${feedback}`);
 
@@ -56,7 +56,7 @@ const ManageClasses = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     if (data.modifiedCount > 0) {
                         refetch();
                         Swal.fire({

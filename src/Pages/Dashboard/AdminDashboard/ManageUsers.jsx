@@ -6,7 +6,7 @@ import useAdmin from '../../../Hooks/useAdmin';
 const ManageUsers = () => {
     const [users, , refetch] = useUsers();
     const [isAdmin, isAdminLoading] = useAdmin();
-    console.log('admin',isAdmin);
+    // console.log('admin',isAdmin);
 
     const handleChangeRole = (user, role) => {
         const token = localStorage.getItem('access-token');
@@ -19,7 +19,7 @@ const ManageUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -64,7 +64,7 @@ const ManageUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.deletedCount > 0) {
                     refetch();
                     Swal.fire(

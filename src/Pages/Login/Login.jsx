@@ -17,12 +17,12 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     const onSubmit = (data) => {
-        console.log(data);
+        // console.log(data);
 
         logIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
 
                 Swal.fire({
                     position: 'top-end',
@@ -51,7 +51,7 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 const saveUser = { name: user?.displayName, email: user?.email, photoURL: user?.photoURL, role: 'student' }
                 fetch('https://sports-zone-server.vercel.app/users', {
                     method: 'POST',

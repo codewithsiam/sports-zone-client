@@ -40,7 +40,7 @@ const [instructorClasses] = useInstructorClasses()
                 })
                     .then(res => res.json())
                     .then(imgResponse => {
-                        console.log(imgResponse);
+                        // console.log(imgResponse);
                         if (imgResponse.success) {
                             const imgURL = imgResponse.data.display_url;
                             const classData = {
@@ -67,7 +67,7 @@ const [instructorClasses] = useInstructorClasses()
 
 
     const handleSwalFireWithUpdate = (classData) => {
-        console.log(classData);
+        // console.log(classData);
       const token = localStorage.getItem('access-token');
     
       axios.patch('https://sports-zone-server.vercel.app/classes/update', {classData}, {
@@ -77,7 +77,7 @@ const [instructorClasses] = useInstructorClasses()
           },
         })
         .then((response) => {
-          console.log(response.data);
+        //   console.log(response.data);
           if (response.data) {
             reset();
             Swal.fire({

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
 const useApprovedClasses = () => {
-  const { data: approvedClasses = [], isLoading: loading, refetch: approvedClassRefetch } = useQuery({
+  const { data: approvedClasses = [], isLoading, refetch: approvedClassRefetch } = useQuery({
     queryKey: ['approvedClasses'],
     queryFn: async () => {
       const res = await axios.get('https://sports-zone-server.vercel.app/classes/approved');
@@ -10,7 +10,7 @@ const useApprovedClasses = () => {
     },
   });
 
-  return [approvedClasses, approvedClassRefetch, loading];
+  return [approvedClasses, approvedClassRefetch, isLoading];
 };
 
 export default useApprovedClasses;

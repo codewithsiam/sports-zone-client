@@ -3,7 +3,7 @@ import useDeniedClasses from '../../Hooks/useDeniedClasses';
 
 const Feedback = () => {
     const [deniedClasses] = useDeniedClasses();
-    console.log(deniedClasses);
+    // console.log(deniedClasses);
     return (
         <div>
             <h1 className="text-2xl font-semibold ">Feedback</h1>

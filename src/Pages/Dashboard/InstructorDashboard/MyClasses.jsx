@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const MyClasses = () => {
     const [instructorClasses] = useInstructorClasses();
-    console.log('sdf', instructorClasses);
+    // console.log('sdf', instructorClasses);
     
     return (
         <div>

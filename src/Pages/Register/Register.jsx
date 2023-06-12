@@ -17,7 +17,7 @@ const Register = () => {
     const from = location.state?.from?.pathname || '/';
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     if(data?.password !== data?.confirmPassword) {
       setPassMatch("Password not matched"); 
@@ -28,7 +28,7 @@ const Register = () => {
     registerWithPass(data?.email, data?.password)
       .then(result => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
 
         // add additional information of user   
         updateUserProfile(data?.name, data?.photoURL)
@@ -38,7 +38,7 @@ const Register = () => {
               email: data.email , 
               photoURL: data.photoURL, 
               role: 'student' };
-              console.log('saved user',saveUser);
+              // console.log('saved user',saveUser);
              
 
             fetch('https://sports-zone-server.vercel.app/users', {
@@ -50,7 +50,7 @@ const Register = () => {
             })
               .then(res => res.json())
               .then(data => {
-                console.log("after post",data)
+                // console.log("after post",data)
                 if (data?.insertedId) {
                   reset();
                   Swal.fire({

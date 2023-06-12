@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import useClasses from '../../Hooks/useClasses';
 import Banner from './Banner/Banner';
 import TopClasses from './TopClasses/TopClasses';
 import TopInstructors from './TopInstructors/TopInstructors';
