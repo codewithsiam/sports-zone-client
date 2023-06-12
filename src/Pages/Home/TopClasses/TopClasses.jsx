@@ -50,10 +50,10 @@ const TopClasses = () => {
                       {cls?.className}
                     </h1>
                   )}
-                  <p className="text-xs md:text-md text-white">
+                  <p className="text-xs md:text-lg text-white">
                     Instructor: {cls?.instructorName}
                   </p>
-                  <p className="text-white">Price: ${cls?.price}</p>
+                  <p className="text-indigo-100 border">Price: ${cls?.price}</p>
                 </div>
                 <Link to="/allClasses">
                   <button className="btn btn-primary">Enroll Now</button>
