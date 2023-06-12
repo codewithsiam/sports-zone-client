@@ -96,7 +96,7 @@ const ManageClasses = () => {
                 </thead>
                 <tbody>
                     {classes.map((cls, index) => (
-                        <tr key={cls?._id}>
+                        <tr key={index}>
                             <td>{index + 1}</td>
                             <td>
                                 <div className="flex items-center space-x-3">

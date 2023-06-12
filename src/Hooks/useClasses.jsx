@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const useClasses = () => {
-    const {loading} = useContext(AuthContext);
+    const {user, loading} = useContext(AuthContext);
     const token = localStorage.getItem('access-token');
     const {data: classes = [], isLoading, refetch} = useQuery({
         enabled: !loading && !!user?.email,

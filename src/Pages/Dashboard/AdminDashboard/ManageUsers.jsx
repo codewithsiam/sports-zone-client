@@ -15,7 +15,7 @@ const ManageUsers = () => {
             method: 'PATCH',
             headers: {
                 Authorization: `Bearer ${token}`
-              }
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -60,7 +60,7 @@ const ManageUsers = () => {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${token}`
-              }
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -87,8 +87,7 @@ const ManageUsers = () => {
                         <tr>
                             <th>#</th>
                             <th>Photo</th>
-                            <th>Name</th>
-                            <th>Email</th>
+                            <th>Name and Email</th>
                             <th>Role</th>
                             <th className='text-center'>Action</th>
                         </tr>
@@ -103,8 +102,17 @@ const ManageUsers = () => {
                                     <td>
                                         <img className='h-10 w-10 rounded-full' src={user?.photoURL} />
                                     </td>
-                                    <td>{user?.name}</td>
-                                    <td>{user?.email}</td>
+                                    <td>
+                                        <div>
+                                            <p>
+                                                {user?.name}
+                                            </p>
+                                            <p>
+                                                {user?.email}
+                                            </p>
+                                        </div>
+                                        
+                                    </td>
                                     <th>
                                         {user?.role ? user.role : 'Student'}
                                     </th>
