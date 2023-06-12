@@ -20,28 +20,28 @@ const Community = () => {
 
       <div className="my-6 flex justify-evenly items-center">
         <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-          <img src="../../../../src/assets/Community/YT.png" alt="" className="w-36" />
+          <img src="./youtube.jpg" alt="" className="w-36" />
           <p className={`text-center flex items-center justify-center gap-1 ${textColorClass} font-bold`}>
             <FaExternalLinkAlt />
             Youtube
           </p>
         </a>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-          <img src="../../../../src/assets/Community/Facebook.png" alt="" className="w-20" />
+        <a href="https://www.facebook.com/abusayedalsiam69" target="_blank" rel="noopener noreferrer">
+          <img src="./fb.jpg" alt="" className="w-20" />
           <p className={`text-center flex items-center justify-center gap-1 ${textColorClass} mt-3 font-bold`}>
             <FaExternalLinkAlt />
             Facebook
           </p>
         </a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-          <img src="../../../../src/assets/Community/Linkedin.png" alt="" className="w-24" />
+        <a href="https://www.linkedin.com/in/abu-sayed-al-siam-411017277/" target="_blank" rel="noopener noreferrer">
+          <img src="./linkedin.jpg" alt="" className="w-24" />
           <p className={`text-center flex items-center justify-center gap-1 ${textColorClass} font-bold mt-2`}>
             <FaExternalLinkAlt />
             Linkedin
           </p>
         </a>
-        <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer">
-          <img src="../../../../src/assets/Community/Telegram.png" alt="" className="w-24" />
+        <a href="https://t.me/Siam_WD" target="_blank" rel="noopener noreferrer">
+          <img src="./telegram.jpg" alt="" className="w-24" />
           <p className={`text-center flex items-center justify-center gap-1 ${textColorClass} font-bold`}>
             <FaExternalLinkAlt />
             Telegram

@@ -14,7 +14,7 @@ const useSelectedClasses = () => {
           Authorization: `Bearer ${token}`,
         },
       };
-      const res = await axios.get(`http://localhost:5000/classes/selected?email=${user?.email}`, config);
+      const res = await axios.get(`https://sports-zone-server.vercel.app/classes/selected?email=${user?.email}`, config);
       return res.data; 
     },
   });

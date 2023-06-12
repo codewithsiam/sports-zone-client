@@ -30,7 +30,7 @@ const MySelectedClasses = () => {
         const handleSwalConfirm = (cls) => {
             const token = localStorage.getItem('access-token');
             console.log(cls);
-            const url = `http://localhost:5000/classes/selected?id=${cls.classId}&email=${user?.email}`
+            const url = `https://sports-zone-server.vercel.app/classes/selected?id=${cls.classId}&email=${user?.email}`
             fetch(url, {
                 method: 'DELETE',
                 Authorization: `Bearer ${token}`,

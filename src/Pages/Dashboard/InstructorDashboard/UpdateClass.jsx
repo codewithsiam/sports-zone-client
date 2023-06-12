@@ -49,7 +49,6 @@ const [instructorClasses] = useInstructorClasses()
                                 classImage: imgURL,
                                 availableSeats: data.availableSeats,
                                 price: data.price,
-                                status: 'Update pending',
                             };
                             
                             handleSwalFireWithUpdate(classData);
@@ -71,7 +70,7 @@ const [instructorClasses] = useInstructorClasses()
         console.log(classData);
       const token = localStorage.getItem('access-token');
     
-      axios.patch('http://localhost:5000/classes/update', {classData}, {
+      axios.patch('https://sports-zone-server.vercel.app/classes/update', {classData}, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

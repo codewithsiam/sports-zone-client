@@ -58,7 +58,7 @@ const AllClasses = () => {
             // send data to the mongodb
 
             const token = localStorage.getItem('access-token');
-            axios.post('http://localhost:5000/classes/selected', classData, {
+            axios.post('https://sports-zone-server.vercel.app/classes/selected', classData, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `bearer ${token}`
@@ -94,10 +94,10 @@ const AllClasses = () => {
     return (
         <div>
             <h2 className='text-xl md:text-3xl font-bold text-center my-8 text-primary '>All Classes</h2>
-            <div className='grid grid-cols-3 gap-5 w-11/12 mx-auto'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-5 w-11/12 mx-auto'>
                 {
                     approvedClasses?.map((cls, index) =>
-                        <div key={index} className={`card w-96  shadow-xl ${cls?.availableSeats == 0 ? "bg-red-300" : isDark ? "bg-indigo-200" : "bg-base-100"} `}>
+                        <div key={index} className={`card w-full md:w-96  shadow-xl ${cls?.availableSeats == 0 ? "bg-red-300" : isDark ? "bg-indigo-200" : "bg-base-100"} `}>
                             <figure><img className='w-full h-48 object-cover' src={cls?.classImage} /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">Class Name: {cls?.className}</h2>

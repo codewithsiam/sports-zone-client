@@ -9,7 +9,6 @@ import useInstructorRole from "../../../Hooks/useInstructorRole";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const { isDark, toggleMode } = useContext(ToggleContext);
-
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructorRole();
 
@@ -39,9 +38,6 @@ const Navbar = () => {
                 </li>
             )}
 
-            <li><NavLink to="/blogs" exact="true"
-                className={`${isDark ? "text-indigo-100 hover:text-indigo-200 mb-2 inline-block text-base leading-loose"
-                    : "text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"}`}>Blogs</NavLink></li>
 
             {/* for testing  */}
             {/* <li><NavLink to="/blogs" exact="true"
@@ -66,7 +62,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to="/">
-                    <h1 className="text-2xl text-primary font-bold md:ml-4">Sports Zone</h1>
+                    <h1 className="text-md md:text-2xl text-primary font-bold md:ml-4">Sports Zone</h1>
                 </Link>
             </div>
             <div className="navbar-end hidden lg:flex">
@@ -74,15 +70,13 @@ const Navbar = () => {
                     {navItems}
                 </ul>
             </div>
-
-
             <li>
-                <div className="md:flex items-center justify-center gap-4 ml-4">
+                <div className="md:flex items-center justify-center gap-4 md:ml-4">
                     <label className="toggle-switch">
-                        <p className={`${isDark ? "text-white font-bold" : "text-primary font-bold"}`}>{isDark ? "Lite" : "Dark"}</p>
+                        <p className={`${isDark ? "text-white font-bold" : "text-primary font-bold"} text-xs md:text-md `}>{isDark ? "Lite" : "Dark"}</p>
                         <input
                             type="checkbox"
-                            className="toggle toggle-primary"
+                            className="toggle  md:toggle-primary toggle-xs"
                             checked={isDark}
                             onChange={() => toggleMode()}
                         />
@@ -91,8 +85,6 @@ const Navbar = () => {
                 </div>
             </li>
             <div className="md:mx-10 ml-auto mr-1">
-
-
                 {user ? (
                     <>
                         {user?.photoURL && (
@@ -101,7 +93,7 @@ const Navbar = () => {
                                 src={user?.photoURL}
                             />
                         )}
-                        <button onClick={handleLogout} className="ml-3 md:ml-5 btn btn-primary text-white">
+                        <button onClick={handleLogout} className="ml-3 md:ml-5 btn btn-primary text-white md:text-md text-xs">
                             Logout <FaSignOutAlt></FaSignOutAlt>
                         </button>
                     </>

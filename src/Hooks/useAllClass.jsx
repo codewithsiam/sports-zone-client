@@ -5,7 +5,7 @@ const useAllClass = () => {
   const { data: allClass = [], isLoading: loading, refetch } = useQuery({
     queryKey: ['allClass'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:5000/classes/approved');
+      const res = await axios.get('https://sports-zone-server.vercel.app/classes/approved');
       return res.data; 
     },
   });
