@@ -66,13 +66,11 @@ const Register = () => {
           })
       }).catch(err => {
         console.log(err.message);
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Something went wrong!',
-          showConfirmButton: false,
-          timer: 1500
-        });
+        Swal.fire(
+          'Something went wrong',
+          `${err.message}`,
+          'error'
+        )
       })
 
   };
