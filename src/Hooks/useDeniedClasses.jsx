@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const useDeniedClasses = () => {
-  const {loading} = useContext(AuthContext);
+  const {loading, user} = useContext(AuthContext);
   const { data: deniedClasses = [], isLoading, refetch } = useQuery({
     enabled: !loading && !!user?.email,
     queryKey: ['deniedClasses'],
