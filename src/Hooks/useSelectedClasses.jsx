@@ -4,8 +4,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const useSelectedClasses = () => {
-  const {user} = useContext(AuthContext);
-  const { data: selectedClasses = [], isLoading: loading, refetch } = useQuery({
+  const {user, loading} = useContext(AuthContext);
+  const { data: selectedClasses = [], isLoading: isLoading, refetch } = useQuery({
+    enabled: !loading && !!user?.email,
     queryKey: ['selectedClasses'],
     queryFn: async () => {
       const token = localStorage.getItem('access-token'); 
@@ -19,7 +20,7 @@ const useSelectedClasses = () => {
     },
   });
 
-  return [selectedClasses, refetch, loading];
+  return [selectedClasses, refetch, isLoading];
 };
 
 export default useSelectedClasses;

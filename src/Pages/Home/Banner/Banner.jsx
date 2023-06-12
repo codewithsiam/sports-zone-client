@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 const Banner = () => {
 
     return (
-        <div className="bg-red-100 h-screen w-screen">
+        <div className="bg-red-100 h-screen w-full">
             <Swiper
                 loop={true}
                 spaceBetween={30}

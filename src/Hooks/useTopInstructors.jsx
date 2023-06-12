@@ -6,7 +6,7 @@ const useTopInstructors = () => {
     queryKey: ['topInstructors'],
     queryFn: async () => {
       const res = await axios.get('https://sports-zone-server.vercel.app/Instructors/popular');
-      return res.data; 
+      return res.data;
     },
   });
 

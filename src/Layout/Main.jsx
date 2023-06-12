@@ -8,7 +8,7 @@ const Main = () => {
 
     const {isDark} = useContext(ToggleContext);
     return (
-        <div className={` ${isDark ? "bg-dark-purple" : "bg-base-100"} `}>
+        <div className={` ${isDark ? "bg-gray-900" : "bg-base-100"} `}>
             <Navbar></Navbar>
             <Outlet></Outlet>
            <Footer></Footer>

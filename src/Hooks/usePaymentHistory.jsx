@@ -5,8 +5,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const usePaymentHistory = () => {
-    const {user} = useContext(AuthContext);
-  const { data: paymentsHistory = [], isLoading: loading, refetch } = useQuery({
+    const {user, loading} = useContext(AuthContext);
+  const { data: paymentsHistory = [], isLoading: isLoading, refetch } = useQuery({
+    enabled: !loading && !!user?.email,
     queryKey: ['paymentsHistory'],
     queryFn: async () => {
       const token = localStorage.getItem('access-token'); 
@@ -20,7 +21,7 @@ const usePaymentHistory = () => {
     },
   });
 
-  return [paymentsHistory, refetch, loading];
+  return [paymentsHistory, refetch, isLoading];
 };
 
 export default usePaymentHistory;

@@ -103,13 +103,13 @@ const AllClasses = () => {
                                 <h2 className="card-title">Class Name: {cls?.className}</h2>
                                 <p>Instructor Name: {cls?.instructorName}</p>
                                 <p>Available Seats: {cls?.availableSeats}</p>
-                                <p>Price: ${cls?.price}</p>
+                                <p className='text-primary font-bold'>Price: ${cls?.price}</p>
                                 <div className="card-actions justify-end">
                                    
 
-                                    {isClassSelected(cls._id) ? (
+                                    {isClassSelected(cls?._id) ? (
                                         <button disabled className='btn'>Already Selected</button>
-                                    ) : isClassEnrolled(cls._id) ? (
+                                    ) : isClassEnrolled(cls?._id) ? (
                                         <button disabled className='btn'>Already Enrolled</button>
                                     ) : (
                                         <button onClick={() => handleSelectClass(cls)} disabled={cls?.availableSeats == 0 || isAdmin || isInstructor} className={`btn btn-primary`}>Select Class</button>

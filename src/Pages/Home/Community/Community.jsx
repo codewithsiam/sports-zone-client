@@ -12,8 +12,8 @@ const Community = () => {
   return (
     <div className={`my-12 py-16 ${cardBackgroundClass}`}>
       <div>
-        <h2 className={`font-semibold text-5xl text-center ${textColorClass}`}>Join our Community</h2>
-        <p className={`text-center text-xl py-4 ${textColorClass}`}>
+        <h2 className={`font-semibold text-5xl text-center text-primary ${textColorClass}`}>Join our Community</h2>
+        <p className={`text-center text-xl py-4  ${textColorClass}`}>
           If you would like to keep up on the latest posts and courses, come by and connect with us on the following links.
         </p>
       </div>

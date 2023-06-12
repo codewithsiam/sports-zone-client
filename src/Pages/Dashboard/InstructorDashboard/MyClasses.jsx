@@ -26,7 +26,7 @@ const MyClasses = () => {
                     <tbody>
 
                         {instructorClasses?.map(cls =>
-                            <tr key={cls._id}>
+                            <tr key={cls?._id}>
                                 <th>1</th>
                                 <td>
                                     <div className="flex items-center space-x-3">

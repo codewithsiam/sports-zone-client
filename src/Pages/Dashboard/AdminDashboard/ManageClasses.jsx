@@ -11,7 +11,7 @@ const ManageClasses = () => {
 
     const handleUpdateStatus = (cls, status) => {
         const token = localStorage.getItem('access-token');
-        const url = `https://sports-zone-server.vercel.app/classes/status/?id=${cls._id}&status=${status}`;
+        const url = `https://sports-zone-server.vercel.app/classes/status/?id=${cls?._id}&status=${status}`;
         fetch(url, {
             method: 'PATCH',
             headers: {
@@ -26,7 +26,7 @@ const ManageClasses = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: `${cls.name} is ${status}!`,
+                        title: `${cls?.name} is ${status}!`,
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -96,13 +96,13 @@ const ManageClasses = () => {
                 </thead>
                 <tbody>
                     {classes.map((cls, index) => (
-                        <tr key={cls._id}>
+                        <tr key={cls?._id}>
                             <td>{index + 1}</td>
                             <td>
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={cls.classImage} alt="Avatar Tailwind CSS Component" />
+                                            <img src={cls?.classImage} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
                                     <div>
@@ -111,10 +111,10 @@ const ManageClasses = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td>{cls.className}</td>''
-                            <td>{cls.availableSeats}</td>
-                            <td>{cls.price}</td>
-                            <td>{cls.status}</td>
+                            <td>{cls?.className}</td>''
+                            <td>{cls?.availableSeats}</td>
+                            <td>{cls?.price}</td>
+                            <td>{cls?.status}</td>
                             <td className="flex gap-2 items-center float-left" >
 
                                 {cls?.status === 'denied' && <button className="btn btn-info w-full" onClick={() => handleSendFeedback(cls)}>Send Feedback</button>}

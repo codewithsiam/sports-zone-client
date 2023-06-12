@@ -4,6 +4,7 @@ import RegisterImage from '/register-image.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 
 const Register = () => {
@@ -18,33 +19,39 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    if(data.password !== data.confirmPassword) {
+    if(data?.password !== data?.confirmPassword) {
       setPassMatch("Password not matched"); 
       return;
     }else{setPassMatch('')}
 
     //creating a new user
-    registerWithPass(data.email, data.password)
+    registerWithPass(data?.email, data?.password)
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
 
-
         // add additional information of user   
-        updateUserProfile(data.name, data.photoURL)
+        updateUserProfile(data?.name, data?.photoURL)
           .then(() => {
-            const saveUser = { name: data.name, email: data.email , photoURL: data.photoURL, role: 'student' };
+            const saveUser = { 
+              name: data.name, 
+              email: data.email , 
+              photoURL: data.photoURL, 
+              role: 'student' };
+              console.log('saved user',saveUser);
+             
+
             fetch('https://sports-zone-server.vercel.app/users', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'
-              },
+            },
               body: JSON.stringify(saveUser)
             })
               .then(res => res.json())
               .then(data => {
-                console.log(data)
-                if (data.insertedId) {
+                console.log("after post",data)
+                if (data?.insertedId) {
                   reset();
                   Swal.fire({
                     position: 'top-end',

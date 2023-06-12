@@ -5,8 +5,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const useInstructorClasses = () => {
-    const {user} = useContext(AuthContext);
-  const { data: instructorClasses = [], isLoading: loading, refetch } = useQuery({
+    const {user, loading} = useContext(AuthContext);
+  const { data: instructorClasses = [], isLoading: isLoading, refetch } = useQuery({
+    enabled: !loading && !!user?.email,
     queryKey: ['instructorClasses'],
     queryFn: async () => {
       const token = localStorage.getItem('access-token'); 
@@ -20,7 +21,7 @@ const useInstructorClasses = () => {
     },
   });
 
-  return [instructorClasses, refetch, loading];
+  return [instructorClasses, refetch, isLoading];
 };
 
 export default useInstructorClasses;

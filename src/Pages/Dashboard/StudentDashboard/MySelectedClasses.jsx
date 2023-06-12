@@ -30,7 +30,7 @@ const MySelectedClasses = () => {
         const handleSwalConfirm = (cls) => {
             const token = localStorage.getItem('access-token');
             console.log(cls);
-            const url = `https://sports-zone-server.vercel.app/classes/selected?id=${cls.classId}&email=${user?.email}`
+            const url = `https://sports-zone-server.vercel.app/classes/selected?id=${cls?.classId}&email=${user?.email}`
             fetch(url, {
                 method: 'DELETE',
                 Authorization: `Bearer ${token}`,
@@ -68,17 +68,17 @@ const MySelectedClasses = () => {
                 </thead>
                 <tbody>
                     {selectedClasses?.map((cls) => (
-                        <tr key={cls._id}>
+                        <tr key={cls?._id}>
                             <td>
                                 <img className="h-10 w-10" src={cls?.classImage} alt="" />
                             </td>
-                            <td>{cls.className}</td>
-                            <td>{cls.instructorName}</td>
-                            <td>{cls.availableSeats}</td>
-                            <td>{cls.price}</td>
+                            <td>{cls?.className}</td>
+                            <td>{cls?.instructorName}</td>
+                            <td>{cls?.availableSeats}</td>
+                            <td>{cls?.price}</td>
                             <td>
                                 <button className="btn btn-ghost bg-green-500 mr-3 text-white">
-                                    <Link to={`/dashboard/payment/${cls._id}`} className="text-white">
+                                    <Link to={`/dashboard/payment/${cls?._id}`} className="text-white">
                                         Pay
                                     </Link>
                                 </button>

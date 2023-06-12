@@ -17,10 +17,8 @@ const TopClasses = () => {
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={1} // Mobile
-        spaceBetween={10} // Mobile
-        slidesPerViewSm={2} // Desktop
-        spaceBetweenSm={20} // Desktop
+        slidesPerView={1} 
+        spaceBetween={10} 
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
@@ -37,7 +35,7 @@ const TopClasses = () => {
         className="mySwiper"
       >
         {topClasses?.map((cls) => (
-          <SwiperSlide key={cls.id}> {/* Add a unique key to each slide */}
+          <SwiperSlide key={cls._id}> {/* Add a unique key to each slide */}
             <div className="relative h-72">
               <div className="absolute "></div>
               <img

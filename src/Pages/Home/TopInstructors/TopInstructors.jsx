@@ -30,7 +30,7 @@ const TopInstructors = () => {
                 className="mySwiper hidden"
             >
                 {topInstructors?.map((ins, index) => (
-                    <SwiperSlide key={ins.id}>
+                    <SwiperSlide key={index}>
                         <div className={`card w-full md:w-[500px] h-72 lg:card-side ${cardBackgroundClass} shadow-2xl`}>
                             <figure>
                                 <img className="w-[250px] h-[290px] object-cover" src={ins.image} alt="" />

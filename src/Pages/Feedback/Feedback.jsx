@@ -22,11 +22,11 @@ const Feedback = () => {
                         {/* row */}
                         {
                             deniedClasses.map((cls, index) =>
-                                cls?.feedback && <tr key={cls._id}>
+                                cls?.feedback && <tr key={cls?._id}>
                                     <th>{index + 1}</th>
-                                    <td>{cls.className}</td>
-                                    <td>{cls.price}</td>
-                                    <td>{cls.feedback}</td>
+                                    <td>{cls?.className}</td>
+                                    <td>{cls?.price}</td>
+                                    <td>{cls?.feedback}</td>
                                 </tr>
                             )
                         }
