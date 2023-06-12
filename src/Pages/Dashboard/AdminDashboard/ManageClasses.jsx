@@ -121,7 +121,7 @@ const ManageClasses = () => {
                                 { (
                                     <div className="flex-col ">
                                 {cls?.status === 'denied' && <button className="btn btn-sm btn-info w-full mb-1"  onClick={() => handleSendFeedback(cls)}>Send Feedback</button>}
-                                        <button disabled={cls?.status === "denied"} className="btn btn-sm btn-success w-full mb-1" onClick={() => handleUpdateStatus(cls, "approved")}>Approve</button>
+                                        <button disabled={cls?.status === "denied" || cls?.status === "approved"} className="btn btn-sm btn-success w-full mb-1" onClick={() => handleUpdateStatus(cls, "approved")}>Approve</button>
                                         <button disabled={cls?.status === "denied"} className="btn btn-sm btn-error w-full" onClick={() => handleUpdateStatus(cls, "denied")}>Deny</button>
                                     </div>
                                 )}
