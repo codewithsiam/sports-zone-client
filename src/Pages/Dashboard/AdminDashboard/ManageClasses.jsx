@@ -117,11 +117,12 @@ const ManageClasses = () => {
                             <td>{cls?.status}</td>
                             <td className="flex gap-2 items-center float-left" >
 
-                                {cls?.status === 'denied' && <button className="btn btn-info w-full" onClick={() => handleSendFeedback(cls)}>Send Feedback</button>}
-                                {cls?.status === "pending" && (
+                                
+                                { (
                                     <div className="flex-col ">
-                                        <button className="btn btn-sm btn-success w-full mb-1" onClick={() => handleUpdateStatus(cls, "approved")}>Approve</button>
-                                        <button className="btn btn-sm btn-error w-full" onClick={() => handleUpdateStatus(cls, "denied")}>Deny</button>
+                                {cls?.status === 'denied' && <button className="btn btn-sm btn-info w-full mb-1"  onClick={() => handleSendFeedback(cls)}>Send Feedback</button>}
+                                        <button disabled={cls?.status === "denied"} className="btn btn-sm btn-success w-full mb-1" onClick={() => handleUpdateStatus(cls, "approved")}>Approve</button>
+                                        <button disabled={cls?.status === "denied"} className="btn btn-sm btn-error w-full" onClick={() => handleUpdateStatus(cls, "denied")}>Deny</button>
                                     </div>
                                 )}
                             </td>
