@@ -99,7 +99,7 @@ const Register = () => {
             <label>Email</label>
             <input
               className='rounded-lg text-black bg-gray-300 mt-2 p-2 focus:border-indigo-500 focus:bg-gray-100 focus:outline-none'
-              type="text"
+              type="email"
               {...register('email', { required: true })}
               placeholder='Enter Your Email'
             />
